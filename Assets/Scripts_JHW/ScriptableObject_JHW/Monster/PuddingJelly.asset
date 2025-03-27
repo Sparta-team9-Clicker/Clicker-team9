@@ -16,3 +16,4 @@ MonoBehaviour:
   monsterHP: 800
   monsterPrefab: {fileID: 0}
   rewardGold: 700
+  type: 1
