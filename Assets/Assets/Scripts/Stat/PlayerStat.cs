@@ -123,4 +123,9 @@ public class PlayerStat : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         panel.SetActive(false);
     }
+
+    public void OnClickSave()
+    {
+        GameManager.Instance.SaveData();
+    }
 }
