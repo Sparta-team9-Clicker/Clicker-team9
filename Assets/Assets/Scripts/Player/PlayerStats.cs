@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    // 플레이어의 스탯 변수
-    public int attackPower = 10;    // 초기 공격력
-    public int playerLevel = 1;     // 레벨
-    public float attackCooldown = 1.0f;  // 공격 쿨타임 (초)
+    // 인스펙터에서 수정 가능하도록 SerializeField를 사용하여 직렬화
+    [SerializeField] private int attackPower = 10;    // 초기 공격력
+    [SerializeField] private float autoAttackPower = 5f;    // 초기 자동 공격력
+    [SerializeField] private int playerLevel = 1;     // 레벨
+    [SerializeField] private float attackCooldown = 1.0f;  // 공격 쿨타임 (초)
+    [SerializeField] private float autoAttackInterval = 2.0f;  // 자동 공격 간격 (초)
 
     private float lastAttackTime = 0f;  // 마지막 공격 시간
+
+    // 자동 공격을 위한 코루틴
+    private Coroutine autoAttackCoroutine;
 
     // 공격력을 증가시키는 함수
     public void IncreaseAttackPower(int amount)
@@ -18,24 +23,69 @@ public class PlayerStats : MonoBehaviour
         Debug.Log("Attack Power: " + attackPower);
     }
 
-    // 공격 함수
-    public void Attack(Enemy target)
+    // 자동 공격력을 증가시키는 함수
+    public void IncreaseAutoAttackPower(float amount)
     {
-        // 공격 쿨타임이 지난 경우에만 공격
-        if (Time.time - lastAttackTime >= attackCooldown)
+        autoAttackPower += amount;
+        Debug.Log("Auto Attack Power: " + autoAttackPower);
+    }
+
+    // 자동 공격 딜레이를 줄이는 함수
+    public void DecreaseAutoAttackInterval(float amount)
+    {
+        autoAttackInterval = Mathf.Max(0.1f, autoAttackInterval - amount);  // 최소 딜레이 0.1초로 제한
+        Debug.Log("Auto Attack Interval: " + autoAttackInterval);
+    }
+
+    // 공격 함수
+    public void Attack(TestEnemy target)
+    {
+        target.TakeDamage(attackPower);
+        Debug.Log("Attacked enemy for " + attackPower + " damage.");
+    }
+
+    // 자동 공격 시작
+    public void StartAutoAttack(TestEnemy target)
+    {
+        if (autoAttackCoroutine == null)
         {
-            target.TakeDamage(attackPower);
-            lastAttackTime = Time.time;
-            Debug.Log("Attacked enemy for " + attackPower + " damage.");
+            autoAttackCoroutine = StartCoroutine(AutoAttack(target));
+        }
+    }
+
+    // 자동 공격 코루틴
+    private IEnumerator AutoAttack(TestEnemy target)
+    {
+        while (true)
+        {
+            // 공격 쿨타임이 지난 경우에만 공격
+            if (Time.time - lastAttackTime >= attackCooldown)
+            {
+                Attack(target);  // 자동 공격
+                lastAttackTime = Time.time;
+            }
+            yield return new WaitForSeconds(autoAttackInterval);  // 일정 시간 후 다시 공격
+        }
+    }
+
+    // 자동 공격 멈추기
+    public void StopAutoAttack()
+    {
+        if (autoAttackCoroutine != null)
+        {
+            StopCoroutine(autoAttackCoroutine);
+            autoAttackCoroutine = null;
         }
     }
 
     // 게임 시작 시 기본 설정
     void Start()
     {
-        // 예시: 게임 시작 시 공격력을 10으로 설정
         attackPower = 10;
+        autoAttackPower = 5f;
         playerLevel = 1;
+        attackCooldown = 1.0f;
+        autoAttackInterval = 2.0f;
     }
 
     // UI나 다른 시스템과 연결하여 스탯을 조정할 수 있게 할 수 있음
@@ -47,17 +97,8 @@ public class PlayerStats : MonoBehaviour
             // 예시로 적을 공격하는 부분 (Enemy 스크립트는 따로 구현 필요)
             // Attack(enemy);  // 실제로 적 객체를 넘겨줘야 합니다.
         }
-
-        if (Input.GetKeyDown(KeyCode.UpArrow))  // 위 화살표를 누르면 공격력 증가
-        {
-            IncreaseAttackPower(5);
-        }
-
-        if (Input.GetKeyDown(KeyCode.RightArrow))  // 오른쪽 화살표를 누르면 레벨 증가
-        {
-            playerLevel++;
-            Debug.Log("Player Level: " + playerLevel);
-        }
     }
 }
+
+
 
