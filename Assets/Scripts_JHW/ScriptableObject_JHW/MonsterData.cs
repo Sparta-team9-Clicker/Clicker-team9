@@ -9,4 +9,5 @@ public class MonsterData : ScriptableObject
     public string monsterName;
     public float monsterHP;
     public GameObject monsterPrefab;
+    public int rewardGold;
 }

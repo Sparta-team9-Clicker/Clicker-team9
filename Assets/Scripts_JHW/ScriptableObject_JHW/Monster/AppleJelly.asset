@@ -15,3 +15,4 @@ MonoBehaviour:
   monsterName: "\uC0AC\uACFC\uC824\uB9AC"
   monsterHP: 500
   monsterPrefab: {fileID: 2625518244925695684, guid: 9f0ed01804657ec47bfa8af8428cc033, type: 3}
+  rewardGold: 200
