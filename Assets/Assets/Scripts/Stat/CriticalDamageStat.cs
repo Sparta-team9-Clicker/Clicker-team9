@@ -10,7 +10,7 @@ public class CriticalDamageStat : StatBase
             playerData.gold -= 100;
             needGold += 100;
             playerData.criticalDamageUpgrade++;
-            playerData.criticalDamage += playerData.criticalDamage * (playerData.criticalDamageUpgrade / 10);
+            playerData.criticalDamage += (int)(playerData.criticalDamage * (playerData.criticalDamageUpgrade * 0.01));
         }
     }
 }

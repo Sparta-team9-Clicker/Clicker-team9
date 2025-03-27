@@ -45,13 +45,14 @@ public class PlayerStat : MonoBehaviour
 
     private void UpdateUI()
     {
-        powerText.text = $"Power {playerData.attackPower}";
-        criticalText.text = $"Critical {playerData.critical}%";
-        criticalDamageText.text = $"CriticalDamage {playerData.criticalDamage}%";
+        powerText.text = $"Power {playerData.attackPower.ToString("N0")}";
+        criticalText.text = $"Critical {playerData.critical.ToString("N2")}%";
+        criticalDamageText.text = $"CriticalDamage {playerData.criticalDamage.ToString("N0")}%";
         powerNeedGoldText.text = $"Power ({playerData.attackUpgrade * 100:N0})";
         goldNeedGoldText.text = $"Gold ({playerData.goldBonusUpgrade * 100:N0})";
         criticalNeedGoldText.text = $"Critical ({playerData.criticalUpgrade * 100:N0})";
         criticalDamageNeedGoldText.text = $"Critical Damage ({playerData.criticalDamageUpgrade * 100:N0})";
+        GameManager.Instance.SaveData();
     }   
 
     public void OnClickPowerUp()
@@ -107,11 +108,13 @@ public class PlayerStat : MonoBehaviour
             playerData.attackPower -= powerStat.equipPower;
             powerText.text = $"Power {playerData.attackPower.ToString()}";
         }
+        GameManager.Instance.SaveData();
     }
 
     public void OnClickMain()
     {
         playerData.gold += 100;
+        GameManager.Instance.SaveData();
     }
 
     IEnumerator ShowPanel()
