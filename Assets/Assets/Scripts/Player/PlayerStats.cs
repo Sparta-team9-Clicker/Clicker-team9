@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    // 인스펙터에서 수정 가능하도록 SerializeField를 사용하여 직렬화
+    // 스탯 변수들
     [SerializeField] private int attackPower = 10;    // 초기 공격력
     [SerializeField] private float autoAttackPower = 5f;    // 초기 자동 공격력
     [SerializeField] private int playerLevel = 1;     // 레벨
@@ -12,36 +12,48 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] private float autoAttackInterval = 2.0f;  // 자동 공격 간격 (초)
 
     private float lastAttackTime = 0f;  // 마지막 공격 시간
-
-    // 자동 공격을 위한 코루틴
     private Coroutine autoAttackCoroutine;
 
-    // 공격력을 증가시키는 함수
+    // 공격력 값을 반환하는 함수
+    public int GetAttackPower()
+    {
+        return attackPower;
+    }
+
+    // 자동 공격력 값을 반환하는 함수
+    public float GetAutoAttackPower()
+    {
+        return autoAttackPower;
+    }
+
+    // 자동 공격 간격 값을 반환하는 함수
+    public float GetAutoAttackInterval()
+    {
+        return autoAttackInterval;
+    }
+
+    // 공격력 증가 함수
     public void IncreaseAttackPower(int amount)
     {
         attackPower += amount;
-        Debug.Log("Attack Power: " + attackPower);
     }
 
-    // 자동 공격력을 증가시키는 함수
+    // 자동 공격력 증가 함수
     public void IncreaseAutoAttackPower(float amount)
     {
         autoAttackPower += amount;
-        Debug.Log("Auto Attack Power: " + autoAttackPower);
     }
 
-    // 자동 공격 딜레이를 줄이는 함수
+    // 자동 공격 간격 감소 함수
     public void DecreaseAutoAttackInterval(float amount)
     {
-        autoAttackInterval = Mathf.Max(0.1f, autoAttackInterval - amount);  // 최소 딜레이 0.1초로 제한
-        Debug.Log("Auto Attack Interval: " + autoAttackInterval);
+        autoAttackInterval = Mathf.Max(0.1f, autoAttackInterval - amount);  // 최소 0.1초로 제한
     }
 
     // 공격 함수
     public void Attack(TestEnemy target)
     {
         target.TakeDamage(attackPower);
-        Debug.Log("Attacked enemy for " + attackPower + " damage.");
     }
 
     // 자동 공격 시작
@@ -58,7 +70,6 @@ public class PlayerStats : MonoBehaviour
     {
         while (true)
         {
-            // 공격 쿨타임이 지난 경우에만 공격
             if (Time.time - lastAttackTime >= attackCooldown)
             {
                 Attack(target);  // 자동 공격
@@ -78,7 +89,7 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
-    // 게임 시작 시 기본 설정
+    // 게임 시작 시 초기화
     void Start()
     {
         attackPower = 10;
@@ -87,18 +98,8 @@ public class PlayerStats : MonoBehaviour
         attackCooldown = 1.0f;
         autoAttackInterval = 2.0f;
     }
-
-    // UI나 다른 시스템과 연결하여 스탯을 조정할 수 있게 할 수 있음
-    void Update()
-    {
-        // 예시: 게임 진행 중 플레이어 스탯을 조정하는 로직 (UI 버튼 등으로 호출)
-        if (Input.GetKeyDown(KeyCode.Space))  // Space 키를 누르면 공격 (예시)
-        {
-            // 예시로 적을 공격하는 부분 (Enemy 스크립트는 따로 구현 필요)
-            // Attack(enemy);  // 실제로 적 객체를 넘겨줘야 합니다.
-        }
-    }
 }
+
 
 
 
