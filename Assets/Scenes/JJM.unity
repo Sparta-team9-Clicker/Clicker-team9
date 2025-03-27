@@ -787,8 +787,8 @@ MonoBehaviour:
   criticalText: {fileID: 2102341960}
   criticalDamageText: {fileID: 657819304}
   stageText: {fileID: 1227976313}
+  powerNeedGoldText: {fileID: 1428526935}
   panel: {fileID: 1795663014}
-  equipPower: 5
 --- !u!1 &820031711
 GameObject:
   m_ObjectHideFlags: 0
@@ -1081,7 +1081,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 100
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1428,7 +1428,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -467, y: -20}
+  m_AnchoredPosition: {x: -450, y: -20}
   m_SizeDelta: {x: 200, y: 100}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1181792336
@@ -1823,10 +1823,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerData:
     stage: 0
-    baseAttack: 0
-    baseCriticalDamage: 0
-    baseCritical: 0
-    basegold: 0
+    attackPower: 0
+    criticalDamage: 0
+    critical: 0
+    gold: 0
     goldBonusUpgrade: 0
     attackUpgrade: 0
     criticalUpgrade: 0
@@ -2690,7 +2690,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 100
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
