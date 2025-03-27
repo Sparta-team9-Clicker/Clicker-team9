@@ -7,6 +7,6 @@ public class MonsterData : ScriptableObject
 {
     [Header("Info")]
     [SerializeField] private string monsterName;
-    [SerializeField] private int monsterHP;
+    [SerializeField] private float monsterHP;
     [SerializeField] private GameObject monsterPrefab;
 }
