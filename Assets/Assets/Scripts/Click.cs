@@ -6,8 +6,10 @@ using UnityEngine.UI;
 public class Click : MonoBehaviour
 {
     private float autoAttackTime = 0f;
+    public int criticalChance = 5;
     private Coroutine autoAttackCoroutine;
-    public ParticleSystem myParticleSystem;
+    public ParticleSystem attackParticle;
+    public ParticleSystem criticalParticle;
     //[SerializeField] Button Upgrade;
 
     private void Start()
@@ -18,8 +20,16 @@ public class Click : MonoBehaviour
     }
     public void AttackBtn()
     {
-        Debug.Log("Attack");
-        myParticleSystem.Play();
+        if (Random.Range(0, 100) < criticalChance)
+        {
+            Debug.Log("Critical");
+            criticalParticle.Play();
+        }
+        else
+        {
+            Debug.Log("Attack");
+            attackParticle.Play();
+        }
     }
     
     IEnumerator AutoAttack()
@@ -31,13 +41,19 @@ public class Click : MonoBehaviour
         }
     }
 
-    public void UpgradeBtn()
+    public void AutoUpgradeBtn()
     {
         autoAttackTime += 0.3f;
         Debug.Log("Upgrade");
 
         StopCoroutine(autoAttackCoroutine);
         autoAttackCoroutine = StartCoroutine(AutoAttack());
+    }
+
+    public void CriUpgradeBtn()
+    {
+        criticalChance += 5;
+        Debug.Log("Upgrade Critical");
     }
 }
 
