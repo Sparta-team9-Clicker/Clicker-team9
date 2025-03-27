@@ -6,7 +6,7 @@ using UnityEngine;
 public class MonsterData : ScriptableObject
 {
     [Header("Info")]
-    [SerializeField] private string monsterName;
-    [SerializeField] private float monsterHP;
-    [SerializeField] private GameObject monsterPrefab;
+    public string monsterName;
+    public float monsterHP;
+    public GameObject monsterPrefab;
 }

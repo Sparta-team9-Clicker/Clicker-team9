@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f76da57e1a7f2574e81d81aab040ff3b, type: 3}
-  m_Name: Monster
+  m_Name: StrawberryJelly
   m_EditorClassIdentifier: 
-  monsterName: "\uC0AC\uACFC\uC824\uB9AC"
-  monsterHP: 500
-  monsterPrefab: {fileID: 2625518244925695684, guid: 9f0ed01804657ec47bfa8af8428cc033, type: 3}
+  monsterName: "\uB538\uAE30\uC824\uB9AC"
+  monsterHP: 600
+  monsterPrefab: {fileID: 4157091609266639220, guid: 3ec29cf78cff5cd409dd686407c5b42f, type: 3}
