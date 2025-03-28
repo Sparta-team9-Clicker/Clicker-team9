@@ -9,13 +9,19 @@ public enum StageType
     Hard
 }
 
-[CreateAssetMenu(fileName ="Monster",menuName ="New Monster")]
-public class MonsterData : ScriptableObject
+[CreateAssetMenu(fileName = "MonsterDataTable", menuName = "Data/MonsterTable")]
+public class MonsterDataTable : ScriptableObject
 {
-    [Header("Info")]
-    public string monsterName;
-    public int monsterHP;
-    public GameObject monsterPrefab;
-    public int rewardGold;
-    public StageType stageType;
+    public MonsterData[] monsters;
 }
+
+[System.Serializable]
+public class MonsterData
+{
+    public string monsterName;
+    public StageType stageType;
+    public int monsterHP;
+    public int rewardGold;
+    public GameObject monsterPrefab; 
+}
+

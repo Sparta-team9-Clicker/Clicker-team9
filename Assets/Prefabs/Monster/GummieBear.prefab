@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7360129485980748675}
   - component: {fileID: 5323857640958245022}
   - component: {fileID: 74208924082366959}
+  - component: {fileID: 3829526358503175503}
   m_Layer: 0
   m_Name: GummieBear
   m_TagString: Untagged
@@ -107,6 +108,25 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3829526358503175503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2909103014477013657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 442e223de12e31e45a2eddfbace50867, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterData:
+    monsterName: 
+    stageType: 0
+    monsterHP: 0
+    rewardGold: 0
+    monsterPrefab: {fileID: 0}
+  monsterStatusUI: {fileID: 0}
 --- !u!1 &6309425361861612247
 GameObject:
   m_ObjectHideFlags: 0

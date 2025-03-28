@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class MonsterStatus : MonoBehaviour
@@ -12,35 +11,40 @@ public class MonsterStatus : MonoBehaviour
     {
         monsterData = data;
         currentHP = monsterData.monsterHP;
+        Debug.Log("여기 실행");
 
-        // UI에 데이터 전달
+        if (monsterStatusUI == null)
+        {
+            monsterStatusUI = FindObjectOfType<MonsterStatusUI>(); 
+        }
+
         if (monsterStatusUI != null)
         {
             monsterStatusUI.SetMonsterData(monsterData);
+            Debug.Log("이거 실행");
         }
     }
 
-    //public void TakeDamage(int damage)
-    //{
-    //    currentHP = Mathf.Max(currentHP - damage, 0);
+    public void TakeDamage(int damage)
+    {
+        currentHP = Mathf.Max(currentHP - damage, 0);
 
-    //    if (monsterStatusUI != null)
-    //    {
-    //        monsterStatusUI.UpdateHP(currentHP);
-    //    }
+        if (monsterStatusUI != null)
+        {
+            monsterStatusUI.UpdateHP(currentHP);
+        }
 
-    //    if (currentHP <= 0)
-    //    {
-    //        Die();
-    //    }
-    //}
+        if (currentHP <= 0)
+        {
+            Die();
+        }
+    }
 
-    //private void Die()
-    //{
-    //    Debug.Log($"{monsterData.monsterName}이(가) 사망했습니다.");
-    //    //GameManager.Instance.AddGold(monsterData.rewardGold);
-    //    Stage.Instance.OnMonsterKilled();
-    //    Destroy(gameObject);
-    //}
+    private void Die()
+    {
+        Debug.Log($"{monsterData.monsterName}이(가) 사망했습니다.");
+        //GameManager.Instance.AddGold(monsterData.rewardGold);
+        StageManager.Instance.OnMonsterKilled();
+        Destroy(gameObject);
+    }
 }
-

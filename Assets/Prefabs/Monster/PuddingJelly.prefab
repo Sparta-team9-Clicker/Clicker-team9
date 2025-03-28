@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1202295000388636071}
   - component: {fileID: 1868027409210708104}
   - component: {fileID: 7435832111221821724}
+  - component: {fileID: 4349431610593831364}
   m_Layer: 0
   m_Name: PuddingJelly
   m_TagString: Untagged
@@ -107,6 +108,25 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4349431610593831364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4941022575535913316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 442e223de12e31e45a2eddfbace50867, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterData:
+    monsterName: 
+    stageType: 0
+    monsterHP: 0
+    rewardGold: 0
+    monsterPrefab: {fileID: 0}
+  monsterStatusUI: {fileID: 0}
 --- !u!1 &8307018292647075118
 GameObject:
   m_ObjectHideFlags: 0

@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 507843117537329374}
   - component: {fileID: 6956264068994395769}
   - component: {fileID: 8833658530885758045}
+  - component: {fileID: 960485148036222473}
   m_Layer: 0
   m_Name: WormJelly
   m_TagString: Untagged
@@ -191,3 +192,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &960485148036222473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8651079771420158859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 442e223de12e31e45a2eddfbace50867, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterData:
+    monsterName: 
+    stageType: 0
+    monsterHP: 0
+    rewardGold: 0
+    monsterPrefab: {fileID: 0}
+  monsterStatusUI: {fileID: 0}

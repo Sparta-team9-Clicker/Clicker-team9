@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -5,9 +6,9 @@ public class MonsterStatusUI : MonoBehaviour
 {
     private int curValue;
     private int maxValue;
+    public TextMeshProUGUI monsterName;
     public Slider uiBar;
 
-    // 몬스터 데이터 설정
     public void SetMonsterData(MonsterData monsterData)
     {
         if (monsterData != null)
@@ -16,22 +17,14 @@ public class MonsterStatusUI : MonoBehaviour
             curValue = maxValue;
             uiBar.maxValue = maxValue;
             uiBar.value = curValue;
+            monsterName.text = monsterData.monsterName;
             Debug.Log($"몬스터 체력: {curValue}");
         }
     }
 
-    //public void UpdateHP(int hp)
-    //{
-    //    curValue = hp;
-    //    uiBar.value = curValue;
-    //}
-    void Update()
+    public void UpdateHP(int hp)
     {
-        uiBar.value = GetPercentage();
-    }
-
-    public int GetPercentage()
-    {
-        return maxValue > 0 ? curValue / maxValue : 0;
+        curValue = hp;
+        uiBar.value = curValue;
     }
 }
