@@ -1,12 +1,14 @@
 public class GoldStat : StatBase
 {
+    public int needGold = 100;
     public GoldStat(PlayerData data) : base(data) { }
 
     public override void Upgrade()
     {
-        if (playerData.gold >= 100)
+        if (playerData.gold >= needGold)
         {
-            playerData.gold -= 100;
+            playerData.gold -= needGold;
+            needGold += 100;
             playerData.goldBonusUpgrade++;
         }
     }
