@@ -8,5 +8,6 @@ public class WeaponeData : ScriptableObject
     public string weaponeName;
     public float critChance;
     public int attackPower;
+    public Sprite weaponeSprite;
 }
 
