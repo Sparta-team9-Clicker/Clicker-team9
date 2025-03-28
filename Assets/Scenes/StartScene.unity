@@ -1936,14 +1936,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: LoadManager
       objectReference: {fileID: 0}
-    - target: {fileID: 8470047211093002699, guid: 8796eaf1099ce9f4592aec472058c13d, type: 3}
-      propertyPath: m_SortingOrder
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 8470047211093002699, guid: 8796eaf1099ce9f4592aec472058c13d, type: 3}
-      propertyPath: m_AdditionalShaderChannelsFlag
-      value: 25
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

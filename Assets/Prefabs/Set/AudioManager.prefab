@@ -174,7 +174,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -306,7 +306,7 @@ MonoBehaviour:
   - type: 0
     clip: {fileID: 8300000, guid: fbd50b6f750f01a42a40ead806f44a8e, type: 3}
   - type: 1
-    clip: {fileID: 8300000, guid: fbd50b6f750f01a42a40ead806f44a8e, type: 3}
+    clip: {fileID: 8300000, guid: ac81e521cc4fffd4cb560d4ddc70d306, type: 3}
   sfxClips:
   - type: 0
     clip: {fileID: 8300000, guid: 768876ef01ca30043a665d0f8f9a5a29, type: 3}
