@@ -56,7 +56,7 @@ public class PlayerStat : MonoBehaviour
     }
 
     public void OnClickPowerUp()
-    {
+    {        
         AudioManager.instance.PlaySfx(AudioManager.Sfxs.Button);
         powerStat.Upgrade();
         if (playerData.gold < powerStat.needGold)
@@ -95,7 +95,7 @@ public class PlayerStat : MonoBehaviour
         if (playerData.gold < goldStat.needGold)
         {
             StartCoroutine(ShowPanel());
-        }
+        }        
         UpdateUI();
     }
 

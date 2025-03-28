@@ -61,4 +61,15 @@ public class SceneLoad : MonoBehaviour
 
         fadeImage.color = new Color(fadeImage.color.r, fadeImage.color.g, fadeImage.color.b, targetAlpha);        
     }
+
+    public IEnumerator TransitionStage()
+    {
+        fadeImage.gameObject.SetActive(true);
+        yield return Fade(1f);
+
+        yield return new WaitForSeconds(0.5f);
+
+        yield return Fade(0f);
+        fadeImage.gameObject.SetActive(false);
+    }
 }

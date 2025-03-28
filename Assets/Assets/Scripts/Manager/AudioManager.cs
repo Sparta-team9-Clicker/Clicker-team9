@@ -9,7 +9,9 @@ public class AudioManager : MonoBehaviour
     public enum Bgms
     {
         Title,
-        Main
+        Stage1,
+        Stage2,
+        Stage3
     }
 
     public enum Sfxs

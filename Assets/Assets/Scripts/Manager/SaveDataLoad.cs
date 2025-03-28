@@ -61,17 +61,20 @@ public class SaveDataLoad : MonoBehaviour
     {
         GameManager.Instance.LoadData(1);
         SceneLoad.instance.ChangeScene("MainScene");
+        AudioManager.instance.PlayBgm(AudioManager.Bgms.Stage1);
     }
 
     public void LoadData2()
     {
         GameManager.Instance.LoadData(2);
         SceneLoad.instance.ChangeScene("MainScene");
+        AudioManager.instance.PlayBgm(AudioManager.Bgms.Stage1);
     }
 
     public void LoadData3()
     {
         GameManager.Instance.LoadData(3);
         SceneLoad.instance.ChangeScene("MainScene");
+        AudioManager.instance.PlayBgm(AudioManager.Bgms.Stage1);
     }
 }
