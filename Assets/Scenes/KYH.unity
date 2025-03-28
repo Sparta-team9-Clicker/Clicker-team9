@@ -1834,6 +1834,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1348541863}
   - component: {fileID: 1348541862}
+  - component: {fileID: 1348541864}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1879,6 +1880,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1348541864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1348541861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 998b177b7ce06ed40aec76b7bca84dca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory:
+  - {fileID: 11400000, guid: c57687cf03aa69744b421537731e2487, type: 2}
+  equippedWeapon: {fileID: 0}
 --- !u!1 &1428526933
 GameObject:
   m_ObjectHideFlags: 0
@@ -2266,7 +2282,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInventory: {fileID: 628453553}
   equipButton: {fileID: 159589375}
-  weapon: {fileID: 0}
+  weapon: {fileID: 11400000, guid: c57687cf03aa69744b421537731e2487, type: 2}
 --- !u!1 &1576753734
 GameObject:
   m_ObjectHideFlags: 0
