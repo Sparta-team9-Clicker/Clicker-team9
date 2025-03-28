@@ -22,7 +22,7 @@ public class PlayerStat : MonoBehaviour
     public TextMeshProUGUI criticalNeedGoldText;
     public TextMeshProUGUI criticalDamageNeedGoldText;
 
-    public GameObject panel;   
+    public GameObject panel;
 
     private void Start()
     {
@@ -34,7 +34,7 @@ public class PlayerStat : MonoBehaviour
         goldStat = new GoldStat(playerData);
 
         panel.SetActive(false);
-        UpdateUI();        
+        UpdateUI();
     }
 
     private void Update()
@@ -53,13 +53,13 @@ public class PlayerStat : MonoBehaviour
         criticalNeedGoldText.text = $"Critical ({playerData.criticalUpgrade * 100:N0})";
         criticalDamageNeedGoldText.text = $"Critical Damage ({playerData.criticalDamageUpgrade * 100:N0})";
         GameManager.Instance.SaveData();
-    }   
+    }
 
     public void OnClickPowerUp()
     {
         AudioManager.instance.PlaySfx(AudioManager.Sfxs.Button);
         powerStat.Upgrade();
-        if(playerData.gold < powerStat.needGold)
+        if (playerData.gold < powerStat.needGold)
         {
             StartCoroutine(ShowPanel());
         }
