@@ -56,7 +56,8 @@ public class PlayerStat : MonoBehaviour
     }   
 
     public void OnClickPowerUp()
-    {        
+    {
+        AudioManager.instance.PlaySfx(AudioManager.Sfxs.Button);
         powerStat.Upgrade();
         if(playerData.gold < powerStat.needGold)
         {
@@ -66,7 +67,8 @@ public class PlayerStat : MonoBehaviour
     }
 
     public void OnClickCriticalUp()
-    {        
+    {
+        AudioManager.instance.PlaySfx(AudioManager.Sfxs.Button);
         criticalStat.Upgrade();
         if (playerData.gold < criticalStat.needgold)
         {
@@ -76,7 +78,8 @@ public class PlayerStat : MonoBehaviour
     }
 
     public void OnClickCriticalDamageUp()
-    {        
+    {
+        AudioManager.instance.PlaySfx(AudioManager.Sfxs.Button);
         criticalDamageStat.Upgrade();
         if (playerData.gold < criticalDamageStat.needGold)
         {
@@ -86,7 +89,8 @@ public class PlayerStat : MonoBehaviour
     }
 
     public void OnClickGoldUp()
-    {        
+    {
+        AudioManager.instance.PlaySfx(AudioManager.Sfxs.Button);
         goldStat.Upgrade();
         if (playerData.gold < goldStat.needGold)
         {
@@ -97,6 +101,7 @@ public class PlayerStat : MonoBehaviour
 
     public void OnClickEquip()
     {
+        AudioManager.instance.PlaySfx(AudioManager.Sfxs.Button);
         playerData.Eqiup = !playerData.Eqiup;
         if (playerData.Eqiup)
         {
@@ -113,6 +118,7 @@ public class PlayerStat : MonoBehaviour
 
     public void OnClickMain()
     {
+        AudioManager.instance.PlaySfx(AudioManager.Sfxs.Attack);
         playerData.gold += 100;
         GameManager.Instance.SaveData();
     }
@@ -126,6 +132,7 @@ public class PlayerStat : MonoBehaviour
 
     public void OnClickSave()
     {
+        AudioManager.instance.PlaySfx(AudioManager.Sfxs.Button);
         GameManager.Instance.SaveData();
     }
 }

@@ -18,8 +18,23 @@ public class AudioManager : MonoBehaviour
         Attack
     }
 
-    [SerializeField] private AudioClip[] bgms;
-    [SerializeField] private AudioClip[] sfxs;
+    [System.Serializable]
+    public class BgmClip
+    {
+        public Bgms type;
+        public AudioClip clip;
+    }
+
+    [System.Serializable]
+    public class SfxClip
+    {
+        public Sfxs type;
+        public AudioClip clip;
+    }
+
+    [SerializeField] private List<BgmClip> bgmClips;
+    [SerializeField] private List<SfxClip> sfxClips;
+
 
     [SerializeField] private AudioSource audioBgm;
     [SerializeField] private AudioSource audioSfx;
@@ -40,8 +55,15 @@ public class AudioManager : MonoBehaviour
 
     public void PlayBgm(Bgms bgm)
     {
-        audioBgm.clip = bgms[(int)bgm];
-        audioBgm.Play();
+        foreach(var bgmClip in bgmClips)
+        {
+            if(bgmClip.type == bgm)
+            {
+                audioBgm.clip = bgmClip.clip;
+                audioBgm.Play();
+                return;
+            }
+        }
     }
 
     public void StopBgm()
@@ -51,6 +73,23 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySfx(Sfxs sfx)
     {
-        audioSfx.PlayOneShot(sfxs[(int)sfx]);
+        foreach(var sfxClip in sfxClips)
+        {
+            if(sfxClip.type == sfx)
+            {                
+                audioSfx.PlayOneShot(sfxClip.clip);
+                return;
+            }
+        }
+    }
+
+    public void SetBgm(float volume)
+    {
+        audioBgm.volume = volume;
+    }
+
+    public void SetSfx(float volume)
+    {
+        audioSfx.volume = volume;
     }
 }
