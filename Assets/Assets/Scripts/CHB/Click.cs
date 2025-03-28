@@ -14,14 +14,19 @@ public class Click : MonoBehaviour
     public AudioSource audioSource;
     public MonsterData monsterData;
 
-    //[SerializeField] Button Upgrade;
+    //프리팹으로 만들어진 오브젝트 생성
+    public GameObject HammerPrefab;
 
+    //[SerializeField] Button Upgrade;
+   
     private void Start()
     {
         StopCoroutine(AutoAttack());
         autoAttackCoroutine = StartCoroutine(AutoAttack());
         //Upgrade.onClick.AddListener(UpgradeBtn);
     }
+
+
     public void AttackBtn()
     {
         TouchPos();
@@ -74,13 +79,16 @@ public class Click : MonoBehaviour
     void TouchPos()
     {
         Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Instantiate(HammerPrefab, pos, Quaternion.identity);
         attackParticle.transform.position = pos;
         criticalParticle.transform.position = pos;
+
     }
 
     void AutoPos()
     {
         Vector2 pos = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width / 2, Screen.height / 2));
+        Instantiate(HammerPrefab, pos, Quaternion.identity);
         attackParticle.transform.position = pos;
         criticalParticle.transform.position = pos;
     }
