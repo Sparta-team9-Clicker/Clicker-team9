@@ -16,19 +16,17 @@ public class PlayerStat : MonoBehaviour
     public TextMeshProUGUI criticalText;
     public TextMeshProUGUI criticalDamageText;
     public TextMeshProUGUI stageText;
+
     public TextMeshProUGUI powerNeedGoldText;
-    //public int powerNeedGold;
+    public TextMeshProUGUI goldNeedGoldText;
+    public TextMeshProUGUI criticalNeedGoldText;
+    public TextMeshProUGUI criticalDamageNeedGoldText;
 
     public GameObject panel;
-
-    //무기공격력, 추후 무기 스크립트 만들어지면 가져올 예정
-    //public int equipPower = 10;
 
     private void Start()
     {
         playerData = GameManager.Instance.playerData;
-
-        //playerData.Eqiup = false;        
 
         powerStat = new PowerStat(playerData);
         criticalStat = new CriticalStat(playerData);
@@ -37,15 +35,6 @@ public class PlayerStat : MonoBehaviour
 
         panel.SetActive(false);
         UpdateUI();
-
-        //powerText.text = $"Power {playerData.attackPower.ToString()}";
-        //goldText.text = $"Gold {playerData.gold.ToString("N0")}";
-        //criticalText.text = $"Critical {playerData.critical.ToString()}%";
-        //criticalDamageText.text = $"CriticalDamage {playerData.criticalDamage.ToString()}%";
-        //stageText.text = $"Stage {playerData.stage}";
-
-        //powerNeedGold = 100;
-        //powerNeedGoldText.text = $"Power ({powerNeedGold.ToString("N0")})";
     }
 
     private void Update()
@@ -56,116 +45,63 @@ public class PlayerStat : MonoBehaviour
 
     private void UpdateUI()
     {
-        powerText.text = $"Power {playerData.attackPower}";
-        criticalText.text = $"Critical {playerData.critical}%";
-        criticalDamageText.text = $"CriticalDamage {playerData.criticalDamage}%";
+        powerText.text = $"Power {playerData.attackPower.ToString("N0")}";
+        criticalText.text = $"Critical {playerData.critical.ToString("N2")}%";
+        criticalDamageText.text = $"CriticalDamage {playerData.criticalDamage.ToString("N0")}%";
         powerNeedGoldText.text = $"Power ({playerData.attackUpgrade * 100:N0})";
+        goldNeedGoldText.text = $"Gold ({playerData.goldBonusUpgrade * 100:N0})";
+        criticalNeedGoldText.text = $"Critical ({playerData.criticalUpgrade * 100:N0})";
+        criticalDamageNeedGoldText.text = $"Critical Damage ({playerData.criticalDamageUpgrade * 100:N0})";
+        GameManager.Instance.SaveData();
     }
-
-    //public void AttackPower()
-    //{
-    //    if (!playerData.Eqiup)
-    //    {
-    //        if (playerData.attackUpgrade >= 2)
-    //            playerData.attackPower += 10;
-    //    }
-    //    else
-    //    {
-    //        playerData.attackPower += equipPower + playerData.attackUpgrade;
-    //    }
-    //}
-
-    //public void Gold()
-    //{
-    //    playerData.gold += playerData.goldBonusUpgrade;
-    //}
-
-    //public void Critical()
-    //{        
-    //    if (playerData.criticalUpgrade >= 2)
-    //    {
-    //        playerData.critical += playerData.critical * (playerData.criticalUpgrade / 10);
-    //    }
-    //}
-
-    //public void CriticalDamage()
-    //{        
-    //    if (playerData.criticalDamageUpgrade >= 2)
-    //    {
-    //        playerData.criticalDamage += playerData.criticalDamage * (playerData.criticalDamageUpgrade / 10);
-    //    }
-    //}
 
     public void OnClickPowerUp()
     {
-        //if (playerData.gold >= powerNeedGold)
-        //{
-        //    playerData.gold -= powerNeedGold;
-        //    powerNeedGold += 100;
-        //    playerData.attackUpgrade++;
-        //    AttackPower();
-        //    powerText.text = $"Power {playerData.attackPower.ToString()}";
-        //    powerNeedGoldText.text = $"Power ({powerNeedGold.ToString("N0")})";
-        //}
-        //else
-        //{
-        //    StartCoroutine(ShowPanel());
-        //}
+        AudioManager.instance.PlaySfx(AudioManager.Sfxs.Button);
         powerStat.Upgrade();
+        if (playerData.gold < powerStat.needGold)
+        {
+            StartCoroutine(ShowPanel());
+        }
         UpdateUI();
     }
 
     public void OnClickCriticalUp()
     {
-        //if (playerData.gold >= 100)
-        //{
-        //    playerData.gold -= 100;
-        //    playerData.criticalUpgrade++;
-        //    Critical();
-        //    criticalText.text = $"Critical {playerData.critical.ToString()}%";
-        //}
-        //else
-        //{
-        //    StartCoroutine(ShowPanel());
-        //}
+        AudioManager.instance.PlaySfx(AudioManager.Sfxs.Button);
         criticalStat.Upgrade();
+        if (playerData.gold < criticalStat.needgold)
+        {
+            StartCoroutine(ShowPanel());
+        }
         UpdateUI();
     }
 
     public void OnClickCriticalDamageUp()
     {
-        //if (playerData.gold >= 100)
-        //{
-        //    playerData.gold -= 100;
-        //    playerData.criticalDamageUpgrade++;
-        //    CriticalDamage();
-        //    criticalDamageText.text = $"CriticalDamage {playerData.criticalDamage.ToString()}%";
-        //}
-        //else
-        //{
-        //    StartCoroutine(ShowPanel());
-        //}
+        AudioManager.instance.PlaySfx(AudioManager.Sfxs.Button);
         criticalDamageStat.Upgrade();
+        if (playerData.gold < criticalDamageStat.needGold)
+        {
+            StartCoroutine(ShowPanel());
+        }
         UpdateUI();
     }
 
     public void OnClickGoldUp()
     {
-        //if (playerData.gold >= 100)
-        //{
-        //    playerData.gold -= 100;
-        //    playerData.goldBonusUpgrade++;
-        //}
-        //else
-        //{
-        //    StartCoroutine(ShowPanel());
-        //}
+        AudioManager.instance.PlaySfx(AudioManager.Sfxs.Button);
         goldStat.Upgrade();
+        if (playerData.gold < goldStat.needGold)
+        {
+            StartCoroutine(ShowPanel());
+        }
         UpdateUI();
     }
 
     public void OnClickEquip()
     {
+        AudioManager.instance.PlaySfx(AudioManager.Sfxs.Button);
         playerData.Eqiup = !playerData.Eqiup;
         if (playerData.Eqiup)
         {
@@ -177,11 +113,14 @@ public class PlayerStat : MonoBehaviour
             playerData.attackPower -= powerStat.equipPower;
             powerText.text = $"Power {playerData.attackPower.ToString()}";
         }
+        GameManager.Instance.SaveData();
     }
 
     public void OnClickMain()
     {
+        AudioManager.instance.PlaySfx(AudioManager.Sfxs.Attack);
         playerData.gold += 100;
+        GameManager.Instance.SaveData();
     }
 
     IEnumerator ShowPanel()
@@ -189,5 +128,11 @@ public class PlayerStat : MonoBehaviour
         panel.SetActive(true);
         yield return new WaitForSeconds(1.5f);
         panel.SetActive(false);
+    }
+
+    public void OnClickSave()
+    {
+        AudioManager.instance.PlaySfx(AudioManager.Sfxs.Button);
+        GameManager.Instance.SaveData();
     }
 }
