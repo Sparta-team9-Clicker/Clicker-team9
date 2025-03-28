@@ -1,6 +1,3 @@
-using UnityEngine;
-using System.Collections;
-
 public class PowerStat : StatBase
 {
     public int needGold = 100;
