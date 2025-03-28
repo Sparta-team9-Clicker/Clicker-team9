@@ -16,4 +16,4 @@ MonoBehaviour:
   monsterHP: 900
   monsterPrefab: {fileID: 8651079771420158859, guid: c3011f93e26720140bf6194d3eb1b0c2, type: 3}
   rewardGold: 800
-  type: 1
+  stageType: 1
