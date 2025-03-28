@@ -1,11 +1,10 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Setting : MonoBehaviour
 {
     public GameObject settingPanel;
-
+    
     public Slider bgmSlider;
     public Slider sfxSlider;
 
@@ -45,11 +44,22 @@ public class Setting : MonoBehaviour
     {
         AudioManager.instance.PlaySfx(AudioManager.Sfxs.Button);
         settingPanel.SetActive(false);
-    }
+    }    
 
     public void OnClickStartScene()
     {
         AudioManager.instance.PlaySfx(AudioManager.Sfxs.Button);
         SceneLoad.instance.ChangeScene("StartScene");
-    }
+    }    
+
+    public void OnClickExitBtn()
+    {
+#if UNITY_EDITOR        
+        GameManager.Instance.SaveData();
+        UnityEditor.EditorApplication.isPlaying = false;
+#else        
+        GameManager.Instance.SaveData();
+        Application.Quit();
+#endif
+    }    
 }

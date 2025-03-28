@@ -43,6 +43,7 @@ public class SceneLoad : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         yield return Fade(0f);
+        fadeImage.gameObject.SetActive(false);
     }
 
     private IEnumerator Fade(float targetAlpha)
@@ -58,6 +59,6 @@ public class SceneLoad : MonoBehaviour
             yield return null;
         }
 
-        fadeImage.color = new Color(fadeImage.color.r, fadeImage.color.g, fadeImage.color.b, targetAlpha);
+        fadeImage.color = new Color(fadeImage.color.r, fadeImage.color.g, fadeImage.color.b, targetAlpha);        
     }
 }

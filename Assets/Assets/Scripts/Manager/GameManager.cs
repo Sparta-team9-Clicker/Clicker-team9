@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     public PlayerData playerData;
 
     string path;
-    string filename = "saveData.json";
+    int curdataIndex = 1;
 
     private void Awake()
     {
@@ -15,8 +15,7 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(this);
-            path = Application.persistentDataPath + "/";            
-            LoadData();
+            path = Application.persistentDataPath + "/";
         }
         else
         {
@@ -25,15 +24,18 @@ public class GameManager : MonoBehaviour
     }
 
     public void SaveData()
-    {        
+    {
+        string filename = $"saveData_{curdataIndex}.json";
         string fullPath = path + filename;
         string data = JsonUtility.ToJson(playerData, true);
         File.WriteAllText(fullPath, data);
         print($"저장경로: {fullPath}");
     }
 
-    public void LoadData()
+    public void LoadData(int dataIndex)
     {
+        curdataIndex = dataIndex;
+        string filename = $"saveData_{dataIndex}.json";
         string fullPath = path + filename;
 
         if (File.Exists(fullPath))
@@ -46,6 +48,7 @@ public class GameManager : MonoBehaviour
         {
             print("저장된 파일이 없습니다.");
             playerData = new PlayerData(1, 10, 120, 5f, 1000, 1, 1, 1, 1, false);
+            SaveData();
         }
     }
 }
