@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff6548ea51a11a645af2acdf41501556, type: 3}
-  m_Name: Weapone01 3
+  m_Script: {fileID: 11500000, guid: b22de7fb7d11a5f4a9c8b9c3866cbd1a, type: 3}
+  m_Name: NewWeapon
   m_EditorClassIdentifier: 
-  weaponeName: "\uBF41\uBF41\uB9DD\uCE58"
-  critChance: 0
-  attackPower: 10
+  weaponName: 
+  attackPower: 0
+  weaponIcon: {fileID: 0}

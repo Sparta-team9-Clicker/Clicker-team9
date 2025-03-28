@@ -256,6 +256,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 117073779}
   m_CullTransparentMesh: 1
+--- !u!114 &159589375 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5230274210460508184, guid: e4632ff050de68e46a7538f5da4f28e2, type: 3}
+  m_PrefabInstance: {fileID: 1232006182760299354}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &167220793
 GameObject:
   m_ObjectHideFlags: 0
@@ -503,6 +514,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 628453552}
+  - component: {fileID: 628453553}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -526,6 +538,20 @@ Transform:
   - {fileID: 167220794}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &628453553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 628453551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 998b177b7ce06ed40aec76b7bca84dca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: []
+  equippedWeapon: {fileID: 0}
 --- !u!1 &657819302
 GameObject:
   m_ObjectHideFlags: 0
@@ -2136,6 +2162,7 @@ GameObject:
   - component: {fileID: 1511966719}
   - component: {fileID: 1511966718}
   - component: {fileID: 1511966720}
+  - component: {fileID: 1511966721}
   m_Layer: 5
   m_Name: EquipPanel
   m_TagString: Untagged
@@ -2225,6 +2252,21 @@ MonoBehaviour:
   m_Spacing: {x: 150, y: 150}
   m_Constraint: 1
   m_ConstraintCount: 3
+--- !u!114 &1511966721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1511966716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b237d3046f1637a4ba08a9563b5da218, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerInventory: {fileID: 628453553}
+  equipButton: {fileID: 159589375}
+  weapon: {fileID: 0}
 --- !u!1 &1576753734
 GameObject:
   m_ObjectHideFlags: 0
@@ -2644,7 +2686,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1751535611
 RectTransform:
   m_ObjectHideFlags: 0
