@@ -1,3 +1,4 @@
+using System.IO;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -5,8 +6,8 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public PlayerData playerData;
 
-    //string path;
-    //string filenamePrefix = "save_";
+    string path;
+    string filename = "saveData.json";
 
     private void Awake()
     {
@@ -14,8 +15,8 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(this);
-            //path = Application.persistentDataPath + "/";
-            playerData = new PlayerData(1, 10, 120, 5, 1000, 1, 1, 1, 1, false);
+            path = Application.persistentDataPath + "/";            
+            LoadData();
         }
         else
         {
@@ -23,11 +24,28 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    //public void SaveData()
-    //{
-    //    string fullPath = path + filenamePrefix + playerData.GetHashCode() + ".json";
-    //    string data = JsonUtility.ToJson(playerData);
-    //    File.WriteAllText(fullPath, data);
-    //    print($"저장경로: {fullPath}");
-    //}
+    public void SaveData()
+    {        
+        string fullPath = path + filename;
+        string data = JsonUtility.ToJson(playerData, true);
+        File.WriteAllText(fullPath, data);
+        print($"저장경로: {fullPath}");
+    }
+
+    public void LoadData()
+    {
+        string fullPath = path + filename;
+
+        if (File.Exists(fullPath))
+        {            
+            string data = File.ReadAllText(fullPath);
+            playerData = JsonUtility.FromJson<PlayerData>(data);
+            print($"로드된 파일: {fullPath}");
+        }
+        else
+        {
+            print("저장된 파일이 없습니다.");
+            playerData = new PlayerData(1, 10, 120, 5f, 1000, 1, 1, 1, 1, false);
+        }
+    }
 }
