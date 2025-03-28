@@ -12,37 +12,52 @@ public class Click : MonoBehaviour
     public ParticleSystem criticalParticle;
     public AudioClip[] touchSound;
     public AudioSource audioSource;
-    //[SerializeField] Button Upgrade;
+    public MonsterData monsterData;
 
+    //프리팹으로 만들어진 오브젝트 생성
+    public GameObject HammerPrefab;
+
+    //[SerializeField] Button Upgrade;
+   
     private void Start()
     {
-        autoAttackCoroutine = StartCoroutine(AutoAttack());
         StopCoroutine(AutoAttack());
+        autoAttackCoroutine = StartCoroutine(AutoAttack());
         //Upgrade.onClick.AddListener(UpgradeBtn);
     }
+
+
     public void AttackBtn()
     {
-        Touch();
+        TouchPos();
+        Attack();
+    }
+    
+    void Attack()
+    {
         if (Random.Range(0, 100) < criticalChance)
         {
             audioSource.PlayOneShot(touchSound[0]);
             Debug.Log("Critical");
             criticalParticle.Play();
+            TestData.instance.Damage(20);
         }
         else
         {
             audioSource.PlayOneShot(touchSound[1]);
             Debug.Log("Attack");
             attackParticle.Play();
+            TestData.instance.Damage(10);
         }
     }
-    
+
     IEnumerator AutoAttack()
     {
         while (true) 
-        { 
+        {
+            AutoPos();
             yield return new WaitForSeconds(1f / autoAttackTime);
-            AttackBtn(); 
+            Attack(); 
         }
     }
 
@@ -61,9 +76,19 @@ public class Click : MonoBehaviour
         Debug.Log("Upgrade Critical");
     }
 
-    void Touch()
+    void TouchPos()
     {
         Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Instantiate(HammerPrefab, pos, Quaternion.identity);
+        attackParticle.transform.position = pos;
+        criticalParticle.transform.position = pos;
+
+    }
+
+    void AutoPos()
+    {
+        Vector2 pos = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width / 2, Screen.height / 2));
+        Instantiate(HammerPrefab, pos, Quaternion.identity);
         attackParticle.transform.position = pos;
         criticalParticle.transform.position = pos;
     }
