@@ -15,8 +15,7 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(this);
-            path = Application.persistentDataPath + "/";            
-            LoadData();
+            path = Application.persistentDataPath + "/";
         }
         else
         {
@@ -32,7 +31,7 @@ public class GameManager : MonoBehaviour
         print($"저장경로: {fullPath}");
     }
 
-    public void LoadData()
+    public void LoadData(int dataIndex)
     {
         string fullPath = path + filename;
 
