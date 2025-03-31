@@ -41,7 +41,6 @@ public class SaveDataLoad : MonoBehaviour
         {
             saveText.text = "Data Empty";
         }
-
     }
 
     public void OnClickCloseSave()

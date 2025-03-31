@@ -17,7 +17,9 @@ public class AudioManager : MonoBehaviour
     {
         Button,
         Attack,
-        Fail
+        Fail,
+        Bubble,
+        Particle
     }
 
     [System.Serializable]
