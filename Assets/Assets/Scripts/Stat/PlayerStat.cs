@@ -24,6 +24,7 @@ public class PlayerStat : MonoBehaviour
 
     public GameObject panel;
     public GameObject equipPanel;
+    public GameObject escapeInventory;
 
     private void Start()
     {
@@ -141,5 +142,10 @@ public class PlayerStat : MonoBehaviour
     public void OnClickEQPanel() 
     {
         equipPanel.SetActive(true);
+    }
+
+    public void OnClickEscapeInventory() 
+    {
+        equipPanel.SetActive(false);
     }
 }
