@@ -16,7 +16,8 @@ public class AudioManager : MonoBehaviour
     public enum Sfxs
     {
         Button,
-        Attack
+        Attack,
+        Fail
     }
 
     [System.Serializable]

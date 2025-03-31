@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public PlayerData playerData;
+    public PlayerStat playerStat;
 
     string path;
     int curdataIndex = 1;
@@ -49,7 +50,7 @@ public class GameManager : MonoBehaviour
         if (playerData == null)
         {
             print("저장된 파일이 없습니다.");
-            playerData = new PlayerData(1, 10, 120, 5f, 1000, 1, 1, 1, 1, false);
+            playerData = new PlayerData(1, 10, 120, 5f, 1000, 0, 0, 0, 0, false);
             SaveData();
         }
     }

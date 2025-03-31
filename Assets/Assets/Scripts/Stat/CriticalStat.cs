@@ -1,14 +1,14 @@
 public class CriticalStat : StatBase
 {
-    public int needgold = 100;
-    public CriticalStat(PlayerData data) : base(data) { }
+    public CriticalStat(PlayerData data, PlayerStat stat) : base(data, stat) { }
 
     public override void Upgrade()
     {
-        if (playerData.gold >= needgold)
+        int totalCost = playerStat.TotalCost(playerData.criticalUpgrade);
+
+        if (playerData.gold >= totalCost)
         {
-            playerData.gold -= needgold;
-            needgold += 100;
+            playerData.gold -= totalCost;            
             playerData.criticalUpgrade++;
             playerData.critical += playerData.critical * (playerData.criticalUpgrade * 0.01f);
         }
