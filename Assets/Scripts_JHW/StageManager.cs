@@ -79,7 +79,8 @@ public class StageManager : MonoBehaviour
             
             if (currentStage == StageType.Hard)
             {
-               SceneLoad.instance.ChangeScene("EndingScene");
+                AudioManager.instance.PlaySfx(AudioManager.Sfxs.Clear);
+                SceneLoad.instance.ChangeScene("EndingScene");
             }
             else
             {

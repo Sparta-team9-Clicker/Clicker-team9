@@ -59,7 +59,7 @@ public class SaveDataLoad : MonoBehaviour
     public void LoadData1()
     {
         GameManager.Instance.LoadData(1);
-        SceneLoad.instance.ChangeScene("MainScene");
+        SceneLoad.instance.ChangeScene("Monnster2_JHW");
         AudioManager.instance.PlayBgm(AudioManager.Bgms.Stage1);
     }
 

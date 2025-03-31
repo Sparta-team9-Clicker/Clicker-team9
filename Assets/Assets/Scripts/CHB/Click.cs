@@ -20,7 +20,7 @@ public class Click : MonoBehaviour
     private void Start()
     {
         StopCoroutine(AutoAttack());
-        autoAttackCoroutine = StartCoroutine(AutoAttack());
+        //autoAttackCoroutine = StartCoroutine(AutoAttack());
         //Upgrade.onClick.AddListener(UpgradeBtn);
         monsterStatus = FindObjectOfType<MonsterStatus>();
     }
@@ -40,7 +40,7 @@ public class Click : MonoBehaviour
         if (monsterStatus == null) return;
         if (Random.Range(0, 100) < criticalChance)
         {
-            audioSource.PlayOneShot(touchSound[0]);
+            //audioSource.PlayOneShot(touchSound[0]);
             Debug.Log("Critical");
             criticalParticle.Play();
             //TestData.instance.Damage(20);
@@ -48,7 +48,7 @@ public class Click : MonoBehaviour
         }
         else
         {
-            audioSource.PlayOneShot(touchSound[1]);
+            //audioSource.PlayOneShot(touchSound[1]);
             Debug.Log("Attack");
             attackParticle.Play();
             //TestData.instance.Damage(10);

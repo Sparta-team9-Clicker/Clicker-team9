@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/EndingScene.unity
     guid: f0de0b5095f8d8d4baec8d825a787a51
+  - enabled: 1
+    path: Assets/Scenes/Monnster2_JHW.unity
+    guid: fea5f594362f29d4587d8849fdb76cb5
   m_configObjects: {}
