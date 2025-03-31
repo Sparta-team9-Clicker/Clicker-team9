@@ -12,5 +12,8 @@ public class CriticalStat : StatBase
             playerData.criticalUpgrade++;
             playerData.critical += playerData.critical * (playerData.criticalUpgrade * 0.01f);
         }
+
+        if (playerData.critical >= 100)
+            playerData.critical = 100;       
     }
 }
