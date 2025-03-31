@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+        LoadData(1);
     }
 
     public void SaveData()
@@ -44,7 +45,8 @@ public class GameManager : MonoBehaviour
             playerData = JsonUtility.FromJson<PlayerData>(data);
             print($"로드된 파일: {fullPath}");
         }
-        else
+
+        if (playerData == null)
         {
             print("저장된 파일이 없습니다.");
             playerData = new PlayerData(1, 10, 120, 5f, 1000, 1, 1, 1, 1, false);
