@@ -15,6 +15,7 @@ public class StageManager : MonoBehaviour
     public TextMeshProUGUI monsterToKillCountUI;
     private int killCount;
     private int monsterToKillCount;
+    public Click click;
 
     private void Awake()
     {
@@ -37,23 +38,17 @@ public class StageManager : MonoBehaviour
 
         if (monsters.Count == 0)
         {
-
             return;
         }
         UpdateStageName();
         killcountText.text = killCount.ToString();
         monsterToKillCountUI.text = monsterToKillCount.ToString();
-
         
         SpawnMonster();
     }
 
     public void SpawnMonster()
     {
-        if (monsters.Count == 0)
-        {
-            return;
-        }
 
         MonsterData selectedMonster = monsters[Random.Range(0, monsters.Count)];
         if (selectedMonster.monsterPrefab == null)
@@ -67,12 +62,15 @@ public class StageManager : MonoBehaviour
         if (monsterStatus != null)
         {
             monsterStatus.SetMonsterData(selectedMonster);
+            click.SetTarget(monsterStatus);
         }
+
     }
 
     public void OnMonsterKilled()
     {
-       killCount++;
+        killCount++;
+        killcountText.text = killCount.ToString();
 
         if (killCount >= monsterToKillCount)
         {
@@ -90,16 +88,16 @@ public class StageManager : MonoBehaviour
         currentStage = (StageType)(((int)currentStage + 1) % 3); 
 
         monsters.Clear();
+        UpdateStageName();
         foreach (var monster in monsterDataTable.monsters)
         {
             if (monster.stageType == currentStage)
                 monsters.Add(monster);
         }
 
-        if (monsters.Count == 0)
-        {
-            return;
-        }
+        if (monsters.Count == 0) return;
+        killcountText.text = killCount.ToString(); 
+        monsterToKillCountUI.text = monsterToKillCount.ToString();
 
         SpawnMonster();
     }
