@@ -439,12 +439,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fbdba23ecd78b441b9c4a58caa746e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zelly: {fileID: 1332319757}
-  zellyLogo: {fileID: 1071631559}
+  jelly: {fileID: 1332319757}
+  jellyLogo: {fileID: 1071631559}
   tabLogo: {fileID: 486995416}
   particle: {fileID: 1365892619}
-  zellyAnim: {fileID: 1332319759}
-  zellyLogoAnim: {fileID: 1071631561}
+  jellyAnim: {fileID: 1332319759}
+  jellyLogoAnim: {fileID: 1071631561}
   tabLogoAnim: {fileID: 486995418}
   particleAnim: {fileID: 1365892621}
 --- !u!1 &412646146
@@ -1069,7 +1069,7 @@ GameObject:
   - component: {fileID: 1071631559}
   - component: {fileID: 1071631561}
   m_Layer: 5
-  m_Name: Zellytext
+  m_Name: Jellytext
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1091,8 +1091,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 50}
-  m_SizeDelta: {x: 760, y: 850}
+  m_AnchoredPosition: {x: -125, y: 35}
+  m_SizeDelta: {x: 580, y: 680}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1071631559
 MonoBehaviour:
@@ -1114,7 +1114,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b20c3a70d91b3b2419b34d13f507c1b0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 21146276ad1eeef4ebe292b808be2640, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1300,7 +1300,7 @@ GameObject:
   - component: {fileID: 1332319757}
   - component: {fileID: 1332319759}
   m_Layer: 5
-  m_Name: Zelly
+  m_Name: Jelly
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
