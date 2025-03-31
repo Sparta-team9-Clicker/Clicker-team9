@@ -149,7 +149,6 @@ public class PlayerStat : MonoBehaviour
     public void OnClickMain()
     {
         AudioManager.instance.PlaySfx(AudioManager.Sfxs.Attack);
-        //playerData.gold += 100;
         GameManager.Instance.SaveData();
     }
 
