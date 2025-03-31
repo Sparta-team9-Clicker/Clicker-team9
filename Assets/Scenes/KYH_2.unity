@@ -579,6 +579,7 @@ MonoBehaviour:
   goldNeedGoldText: {fileID: 398033262}
   criticalNeedGoldText: {fileID: 1387290464}
   criticalDamageNeedGoldText: {fileID: 396406994}
+  Btns: {fileID: 1545897555}
   panel: {fileID: 791254344}
   equipPanel: {fileID: 1366610840}
   escapeInventory: {fileID: 386838409}
@@ -1225,7 +1226,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 253507718}
         m_TargetAssemblyTypeName: PlayerStat, Assembly-CSharp
         m_MethodName: OnClickEscapeInventory
         m_Mode: 1
@@ -4152,7 +4153,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 253507718}
         m_TargetAssemblyTypeName: PlayerStat, Assembly-CSharp
-        m_MethodName: OnClickEquip
+        m_MethodName: OnClickEQPanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
