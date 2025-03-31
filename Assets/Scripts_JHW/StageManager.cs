@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StageManager : MonoBehaviour
 {
@@ -71,11 +72,20 @@ public class StageManager : MonoBehaviour
     {
         killCount++;
         killcountText.text = killCount.ToString();
-
+        
         if (killCount >= monsterToKillCount)
         {
-            SceneLoad.instance.StartCoroutine(SceneLoad.instance.TransitionStage());
-            NextStage();
+           
+            
+            if (currentStage == StageType.Hard)
+            {
+               SceneLoad.instance.ChangeScene("EndingScene");
+            }
+            else
+            {
+                StartCoroutine(SceneLoad.instance.TransitionStage());
+                NextStage();
+            }
         }
         else
         {
@@ -85,6 +95,10 @@ public class StageManager : MonoBehaviour
 
     private void NextStage()
     {
+        if (currentStage == StageType.Hard)
+        {
+            return;  
+        }
         killCount = 0;
         currentStage = (StageType)(((int)currentStage + 1) % 3); 
 

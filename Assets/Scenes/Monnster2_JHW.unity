@@ -2705,6 +2705,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1866603033}
     - target: {fileID: 5140403445022979727, guid: 14af8e371fde4444aad0bb0b9d7dba24, type: 3}
+      propertyPath: HammerPrefab
+      value: 
+      objectReference: {fileID: 6265215523986564202, guid: 34ea8e77158d0e440b1f4ba074f0466b, type: 3}
+    - target: {fileID: 5140403445022979727, guid: 14af8e371fde4444aad0bb0b9d7dba24, type: 3}
       propertyPath: attackParticle
       value: 
       objectReference: {fileID: 1842678285}
