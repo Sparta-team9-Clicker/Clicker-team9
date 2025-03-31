@@ -23,6 +23,7 @@ public class PlayerStat : MonoBehaviour
     public TextMeshProUGUI criticalDamageNeedGoldText;
 
     public GameObject panel;
+    public GameObject equipPanel;
 
     private void Start()
     {
@@ -34,6 +35,7 @@ public class PlayerStat : MonoBehaviour
         goldStat = new GoldStat(playerData);
 
         panel.SetActive(false);
+        equipPanel.SetActive(false);
         UpdateUI();
     }
 
@@ -134,5 +136,10 @@ public class PlayerStat : MonoBehaviour
     {
         AudioManager.instance.PlaySfx(AudioManager.Sfxs.Button);
         GameManager.Instance.SaveData();
+    }
+
+    public void OnClickEQPanel() 
+    {
+        equipPanel.SetActive(true);
     }
 }
