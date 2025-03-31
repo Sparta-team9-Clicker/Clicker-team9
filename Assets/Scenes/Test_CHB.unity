@@ -523,33 +523,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5220135800674006204, guid: c41a16bd308c14f4c8939d96eac8edd8, type: 3}
-      propertyPath: m_SortingOrder
-      value: 101
-      objectReference: {fileID: 0}
     - target: {fileID: 6974245819343200812, guid: c41a16bd308c14f4c8939d96eac8edd8, type: 3}
       propertyPath: m_Name
       value: CriticalParticle
-      objectReference: {fileID: 0}
-    - target: {fileID: 6974245819343200812, guid: c41a16bd308c14f4c8939d96eac8edd8, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8035245086132065803, guid: c41a16bd308c14f4c8939d96eac8edd8, type: 3}
-      propertyPath: ShapeModule.m_Scale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8035245086132065803, guid: c41a16bd308c14f4c8939d96eac8edd8, type: 3}
-      propertyPath: ShapeModule.m_Scale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8035245086132065803, guid: c41a16bd308c14f4c8939d96eac8edd8, type: 3}
-      propertyPath: ShapeModule.radius.value
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8035245086132065803, guid: c41a16bd308c14f4c8939d96eac8edd8, type: 3}
-      propertyPath: InitialModule.startLifetime.scalar
-      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -870,6 +846,10 @@ PrefabInstance:
       propertyPath: HammerPrefab
       value: 
       objectReference: {fileID: 6265215523986564202, guid: 34ea8e77158d0e440b1f4ba074f0466b, type: 3}
+    - target: {fileID: 5140403445022979727, guid: 14af8e371fde4444aad0bb0b9d7dba24, type: 3}
+      propertyPath: monsterStatus
+      value: 
+      objectReference: {fileID: 1088543074}
     - target: {fileID: 5140403445022979727, guid: 14af8e371fde4444aad0bb0b9d7dba24, type: 3}
       propertyPath: attackParticle
       value: 
@@ -1470,6 +1450,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4390601443451982312, guid: 4d20ce283996672409b742ec39ab5d40, type: 3}
   m_PrefabInstance: {fileID: 1093542699}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1088543074 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1454910659473323287, guid: 4d20ce283996672409b742ec39ab5d40, type: 3}
+  m_PrefabInstance: {fileID: 1093542699}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1088543073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 442e223de12e31e45a2eddfbace50867, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1093542699
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3246,14 +3237,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 5348790509173436602, guid: 91695b2644612d341b2808a0c099fcf3, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5348790509173436602, guid: 91695b2644612d341b2808a0c099fcf3, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5348790509173436602, guid: 91695b2644612d341b2808a0c099fcf3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -3297,46 +3280,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: AttackParticle
       objectReference: {fileID: 0}
-    - target: {fileID: 6291958923224843727, guid: 91695b2644612d341b2808a0c099fcf3, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6842081297709602396, guid: 91695b2644612d341b2808a0c099fcf3, type: 3}
-      propertyPath: ShapeModule.m_Scale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6842081297709602396, guid: 91695b2644612d341b2808a0c099fcf3, type: 3}
-      propertyPath: ShapeModule.m_Scale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6842081297709602396, guid: 91695b2644612d341b2808a0c099fcf3, type: 3}
-      propertyPath: ShapeModule.m_Texture
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6842081297709602396, guid: 91695b2644612d341b2808a0c099fcf3, type: 3}
-      propertyPath: ShapeModule.radius.value
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6842081297709602396, guid: 91695b2644612d341b2808a0c099fcf3, type: 3}
-      propertyPath: InitialModule.startSize.scalar
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6842081297709602396, guid: 91695b2644612d341b2808a0c099fcf3, type: 3}
-      propertyPath: InitialModule.startLifetime.scalar
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7292266813934218427, guid: 91695b2644612d341b2808a0c099fcf3, type: 3}
-      propertyPath: m_SortingOrder
-      value: 101
-      objectReference: {fileID: 0}
-    - target: {fileID: 7292266813934218427, guid: 91695b2644612d341b2808a0c099fcf3, type: 3}
-      propertyPath: m_MaxParticleSize
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7292266813934218427, guid: 91695b2644612d341b2808a0c099fcf3, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3696,6 +3639,10 @@ PrefabInstance:
     - target: {fileID: 6265215523986564202, guid: 34ea8e77158d0e440b1f4ba074f0466b, type: 3}
       propertyPath: m_Name
       value: HammerAttack
+      objectReference: {fileID: 0}
+    - target: {fileID: 6265215523986564202, guid: 34ea8e77158d0e440b1f4ba074f0466b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
