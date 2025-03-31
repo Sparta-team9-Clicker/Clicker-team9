@@ -403,7 +403,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &628453552
 Transform:
   m_ObjectHideFlags: 0
@@ -657,7 +657,7 @@ RectTransform:
   - {fileID: 2102341959}
   - {fileID: 657819303}
   - {fileID: 1795663015}
-  - {fileID: 5413169040050433617}
+  - {fileID: 6173633683297029247}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -687,6 +687,8 @@ MonoBehaviour:
   criticalNeedGoldText: {fileID: 1695586081}
   criticalDamageNeedGoldText: {fileID: 1106520231}
   panel: {fileID: 1795663014}
+  equipPanel: {fileID: 0}
+  escapeInventory: {fileID: 0}
 --- !u!1 &820031711
 GameObject:
   m_ObjectHideFlags: 0
@@ -3421,11 +3423,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2102341958}
   m_CullTransparentMesh: 1
---- !u!224 &5413169040050433617 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 1981932708786647038, guid: c2535f5085f358b4e96cbb965e0e9287, type: 3}
-  m_PrefabInstance: {fileID: 6173633683297029246}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6173633683297029246
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3567,6 +3564,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2535f5085f358b4e96cbb965e0e9287, type: 3}
+--- !u!224 &6173633683297029247 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2512775356549863510, guid: c2535f5085f358b4e96cbb965e0e9287, type: 3}
+  m_PrefabInstance: {fileID: 6173633683297029246}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

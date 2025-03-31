@@ -439,12 +439,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fbdba23ecd78b441b9c4a58caa746e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zelly: {fileID: 1332319757}
-  zellyLogo: {fileID: 1071631559}
+  jelly: {fileID: 1332319757}
+  jellyLogo: {fileID: 1071631559}
   tabLogo: {fileID: 486995416}
   particle: {fileID: 1365892619}
-  zellyAnim: {fileID: 1332319759}
-  zellyLogoAnim: {fileID: 1071631561}
+  jellyAnim: {fileID: 1332319759}
+  jellyLogoAnim: {fileID: 1071631561}
   tabLogoAnim: {fileID: 486995418}
   particleAnim: {fileID: 1365892621}
 --- !u!1 &412646146
@@ -1023,30 +1023,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8952738852972327831, guid: 2d6e8383b411be343980203265adc4f8, type: 3}
-      propertyPath: sfxClips.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8952738852972327831, guid: 2d6e8383b411be343980203265adc4f8, type: 3}
-      propertyPath: sfxClips.Array.data[0].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: aa8dbe4870b89984c9b205c2d509e721, type: 3}
-    - target: {fileID: 8952738852972327831, guid: 2d6e8383b411be343980203265adc4f8, type: 3}
-      propertyPath: sfxClips.Array.data[3].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 26703e72cd6a4ea4788439220cc60083, type: 3}
-    - target: {fileID: 8952738852972327831, guid: 2d6e8383b411be343980203265adc4f8, type: 3}
-      propertyPath: sfxClips.Array.data[3].type
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8952738852972327831, guid: 2d6e8383b411be343980203265adc4f8, type: 3}
-      propertyPath: sfxClips.Array.data[4].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 1f3bebf4bb653c24680cfab4425b774d, type: 3}
-    - target: {fileID: 8952738852972327831, guid: 2d6e8383b411be343980203265adc4f8, type: 3}
-      propertyPath: sfxClips.Array.data[4].type
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 9104203202615515373, guid: 2d6e8383b411be343980203265adc4f8, type: 3}
       propertyPath: m_Name
       value: AudioManager
@@ -1069,7 +1045,7 @@ GameObject:
   - component: {fileID: 1071631559}
   - component: {fileID: 1071631561}
   m_Layer: 5
-  m_Name: Zellytext
+  m_Name: Jellytext
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1091,8 +1067,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 50}
-  m_SizeDelta: {x: 760, y: 850}
+  m_AnchoredPosition: {x: -125, y: 35}
+  m_SizeDelta: {x: 580, y: 680}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1071631559
 MonoBehaviour:
@@ -1114,7 +1090,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b20c3a70d91b3b2419b34d13f507c1b0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 21146276ad1eeef4ebe292b808be2640, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1300,7 +1276,7 @@ GameObject:
   - component: {fileID: 1332319757}
   - component: {fileID: 1332319759}
   m_Layer: 5
-  m_Name: Zelly
+  m_Name: Jelly
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

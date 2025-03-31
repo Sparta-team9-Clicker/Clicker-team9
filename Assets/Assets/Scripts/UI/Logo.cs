@@ -5,20 +5,20 @@ using UnityEngine.UI;
 
 public class Logo : MonoBehaviour
 {
-    public Image zelly;
-    public Image zellyLogo;
+    public Image jelly;
+    public Image jellyLogo;
     public Image tabLogo;
     public Image particle;
 
-    public Animator zellyAnim;
-    public Animator zellyLogoAnim;
+    public Animator jellyAnim;
+    public Animator jellyLogoAnim;
     public Animator tabLogoAnim;
     public Animator particleAnim;
 
     private void Start()
     {
-        zelly.enabled = false;
-        zellyLogo.enabled = false;
+        jelly.enabled = false;
+        jellyLogo.enabled = false;
         tabLogo.enabled = false;
         particle.enabled = false;
 
@@ -27,13 +27,13 @@ public class Logo : MonoBehaviour
 
     IEnumerator StartLogo()
     {
-        zelly.enabled = true;
-        zellyAnim.Play("Zelly", 0, 0f);
+        jelly.enabled = true;
+        jellyAnim.Play("Jelly", 0, 0f);
         AudioManager.instance.PlaySfx(AudioManager.Sfxs.Bubble);
         yield return new WaitForSeconds(0.5f);
 
-        zellyLogo.enabled = true;
-        zellyLogoAnim.Play("Zellytext", 0 ,0f);
+        jellyLogo.enabled = true;
+        jellyLogoAnim.Play("Jellytext", 0 ,0f);
         AudioManager.instance.PlaySfx(AudioManager.Sfxs.Bubble);
         yield return new WaitForSeconds(0.5f);
 

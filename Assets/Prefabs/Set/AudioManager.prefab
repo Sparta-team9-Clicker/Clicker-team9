@@ -309,10 +309,16 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: ac81e521cc4fffd4cb560d4ddc70d306, type: 3}
   sfxClips:
   - type: 0
-    clip: {fileID: 8300000, guid: 768876ef01ca30043a665d0f8f9a5a29, type: 3}
+    clip: {fileID: 8300000, guid: aa8dbe4870b89984c9b205c2d509e721, type: 3}
   - type: 1
     clip: {fileID: 8300000, guid: b2339d42d71ef8646b214a6c12e95d54, type: 3}
   - type: 2
     clip: {fileID: 8300000, guid: 2d77a98d162c5ab45b0b5a457ec644fe, type: 3}
+  - type: 3
+    clip: {fileID: 8300000, guid: 26703e72cd6a4ea4788439220cc60083, type: 3}
+  - type: 4
+    clip: {fileID: 8300000, guid: 1f3bebf4bb653c24680cfab4425b774d, type: 3}
+  - type: 5
+    clip: {fileID: 8300000, guid: b2159dfa5ea7f5642bef0968e9c4aee4, type: 3}
   audioBgm: {fileID: 1875334486356805351}
   audioSfx: {fileID: 8426267569784735075}
