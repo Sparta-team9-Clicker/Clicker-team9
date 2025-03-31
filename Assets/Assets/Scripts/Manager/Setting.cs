@@ -49,6 +49,7 @@ public class Setting : MonoBehaviour
     public void OnClickStartScene()
     {
         AudioManager.instance.PlaySfx(AudioManager.Sfxs.Button);
+        AudioManager.instance.PlayBgm(AudioManager.Bgms.Title);
         SceneLoad.instance.ChangeScene("StartScene");
     }    
 

@@ -1,16 +1,16 @@
 public class PowerStat : StatBase
 {
-    public int needGold = 100;
     public int equipPower = 10;
 
-    public PowerStat(PlayerData data) : base(data) { }
+    public PowerStat(PlayerData data, PlayerStat stat) : base(data, stat) { }
 
     public override void Upgrade()
     {
-        if (playerData.gold >= needGold)
+        int totalCost = playerStat.TotalCost(playerData.attackUpgrade);
+
+        if (playerData.gold >= totalCost)
         {
-            playerData.gold -= needGold;
-            needGold += 100;
+            playerData.gold -= totalCost;
             playerData.attackUpgrade++;
             playerData.attackPower += 10;
         }
