@@ -25,17 +25,6 @@ public class Click : MonoBehaviour
         StopCoroutine(AutoAttack());
         autoAttackCoroutine = StartCoroutine(AutoAttack());
         //Upgrade.onClick.AddListener(UpgradeBtn);
-        if (GameManager.Instance == null)
-        {
-            Debug.LogError("GameManager.Instance가 null입니다!");
-            return;
-        }
-
-        if (GameManager.Instance.playerData == null)
-        {
-            Debug.LogError("GameManager.Instance.playerData가 null입니다!");
-            return;
-        }
         monsterStatus = FindObjectOfType<MonsterStatus>();
     }
     public void SetTarget(MonsterStatus newTarget)
