@@ -40,12 +40,12 @@ public class PlayerStat : MonoBehaviour
     private void Update()
     {
         goldStat.Gold();
-        goldText.text = $"Gold {playerData.gold.ToString("N0")}";
+        goldText.text = $"{playerData.gold.ToString("N0")}";
     }
 
     private void UpdateUI()
     {
-        powerText.text = $"Power {playerData.attackPower.ToString("N0")}";
+        powerText.text = $"{playerData.attackPower.ToString("N0")}";
         criticalText.text = $"Critical {playerData.critical.ToString("N2")}%";
         criticalDamageText.text = $"CriticalDamage {playerData.criticalDamage.ToString("N0")}%";
         powerNeedGoldText.text = $"Power ({playerData.attackUpgrade * 100:N0})";
@@ -106,12 +106,12 @@ public class PlayerStat : MonoBehaviour
         if (playerData.Eqiup)
         {
             playerData.attackPower += powerStat.equipPower;
-            powerText.text = $"Power {playerData.attackPower.ToString()}";
+            powerText.text = $"{playerData.attackPower.ToString()}";
         }
         else
         {
             playerData.attackPower -= powerStat.equipPower;
-            powerText.text = $"Power {playerData.attackPower.ToString()}";
+            powerText.text = $"{playerData.attackPower.ToString()}";
         }
         GameManager.Instance.SaveData();
     }
