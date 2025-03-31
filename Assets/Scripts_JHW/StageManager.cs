@@ -74,6 +74,9 @@ public class StageManager : MonoBehaviour
 
         if (killCount >= monsterToKillCount)
         {
+            Debug.Log("페이드인아웃 효과 시작");
+            SceneLoad.instance.StartCoroutine(SceneLoad.instance.TransitionStage());
+            Debug.Log("끝");
             NextStage();
         }
         else

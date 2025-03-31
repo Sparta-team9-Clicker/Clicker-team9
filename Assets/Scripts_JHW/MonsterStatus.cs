@@ -17,7 +17,6 @@ public class MonsterStatus : MonoBehaviour
     {
         monsterData = data;
         currentHP = monsterData.monsterHP;
-        Debug.Log("여기 실행");
 
         if (monsterStatusUI == null)
         {
@@ -27,14 +26,12 @@ public class MonsterStatus : MonoBehaviour
         if (monsterStatusUI != null)
         {
             monsterStatusUI.SetMonsterData(monsterData);
-            Debug.Log("이거 실행");
         }
     }
 
     public void TakeDamage(int damage)
     {
         animator.SetTrigger("isDamage");
-        Debug.Log("데미지 애니메이션 호출");
         currentHP = Mathf.Max(currentHP - damage, 0);
 
         if (monsterStatusUI != null)
