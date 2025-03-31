@@ -13,7 +13,7 @@ public class Logo : MonoBehaviour
     public Animator jellyAnim;
     public Animator jellyLogoAnim;
     public Animator tabLogoAnim;
-    public Animator particleAnim;
+    public Animator particleAnim;    
 
     private void Start()
     {
@@ -45,5 +45,11 @@ public class Logo : MonoBehaviour
         particle.enabled = true;
         AudioManager.instance.PlaySfx(AudioManager.Sfxs.Particle);
         particleAnim.Play("Particle", 0, 0f);
+    }
+
+    public void OnClickJelly()
+    {
+        jellyAnim.SetTrigger("Click");
+        AudioManager.instance.PlaySfx(AudioManager.Sfxs.Bubble);
     }
 }
