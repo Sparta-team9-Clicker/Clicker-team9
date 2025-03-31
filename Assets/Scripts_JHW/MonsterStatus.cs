@@ -47,7 +47,6 @@ public class MonsterStatus : MonoBehaviour
 
     private void Die()
     {
-        Debug.Log($"{monsterData.monsterName}이(가) 사망했습니다.");
         StageManager.Instance.OnMonsterKilled();
         GameManager.Instance.playerData.gold += monsterData.rewardGold;
         Destroy(gameObject);

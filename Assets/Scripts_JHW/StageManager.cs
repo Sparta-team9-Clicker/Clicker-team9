@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StageManager : MonoBehaviour
 {
@@ -71,13 +72,21 @@ public class StageManager : MonoBehaviour
     {
         killCount++;
         killcountText.text = killCount.ToString();
-
+        
         if (killCount >= monsterToKillCount)
         {
-            Debug.Log("페이드인아웃 효과 시작");
-            SceneLoad.instance.StartCoroutine(SceneLoad.instance.TransitionStage());
-            Debug.Log("끝");
-            NextStage();
+           
+            
+            if (currentStage == StageType.Hard)
+            {
+                AudioManager.instance.PlaySfx(AudioManager.Sfxs.Clear);
+                SceneLoad.instance.ChangeScene("EndingScene");
+            }
+            else
+            {
+                StartCoroutine(SceneLoad.instance.TransitionStage());
+                NextStage();
+            }
         }
         else
         {
@@ -87,6 +96,10 @@ public class StageManager : MonoBehaviour
 
     private void NextStage()
     {
+        if (currentStage == StageType.Hard)
+        {
+            return;  
+        }
         killCount = 0;
         currentStage = (StageType)(((int)currentStage + 1) % 3); 
 
@@ -114,15 +127,15 @@ public class StageManager : MonoBehaviour
         switch (currentStage)
         {
             case StageType.Easy:
-                stageName.text = "과일젤리무리";
+                stageName.text = "1. 과일젤리무리";
                 monsterToKillCount = 5;
                 break;
             case StageType.Normal:
-                stageName.text = "달콤젤리무리";
+                stageName.text = "2. 달콤젤리무리";
                 monsterToKillCount = 6;
                 break;
             case StageType.Hard:
-                stageName.text = "보스상어왕";
+                stageName.text = "3. 보스상어왕";
                 monsterToKillCount = 1;
                 break;
         }
