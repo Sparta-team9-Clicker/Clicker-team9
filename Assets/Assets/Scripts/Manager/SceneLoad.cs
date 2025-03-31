@@ -64,6 +64,7 @@ public class SceneLoad : MonoBehaviour
 
     public IEnumerator TransitionStage()
     {
+        Debug.Log("»£√‚µ ");
         fadeImage.gameObject.SetActive(true);
         yield return Fade(1f);
 
