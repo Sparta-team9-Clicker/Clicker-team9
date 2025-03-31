@@ -13,7 +13,6 @@ public class Click : MonoBehaviour
     public MonsterData monsterData;
     public MonsterStatus monsterStatus;
 
-    //프리팹으로 만들어진 오브젝트 생성
     public GameObject HammerPrefab;
 
     //[SerializeField] Button Upgrade;
@@ -96,7 +95,8 @@ public class Click : MonoBehaviour
     void TouchPos()
     {
         Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        //Instantiate(HammerPrefab, pos, Quaternion.identity);
+        Instantiate(HammerPrefab, pos, Quaternion.identity);
+        pos = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width / 2, Screen.height / 2));
         attackParticle.transform.position = pos;
         criticalParticle.transform.position = pos;
 
