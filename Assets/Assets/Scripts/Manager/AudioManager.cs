@@ -19,7 +19,8 @@ public class AudioManager : MonoBehaviour
         Attack,
         Fail,
         Bubble,
-        Particle
+        Particle,
+        Clear
     }
 
     [System.Serializable]
