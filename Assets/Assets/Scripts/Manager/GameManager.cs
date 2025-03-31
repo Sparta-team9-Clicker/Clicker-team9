@@ -31,7 +31,6 @@ public class GameManager : MonoBehaviour
         string fullPath = path + filename;
         string data = JsonUtility.ToJson(playerData, true);
         File.WriteAllText(fullPath, data);
-        print($"저장경로: {fullPath}");
     }
 
     public void LoadData(int dataIndex)
