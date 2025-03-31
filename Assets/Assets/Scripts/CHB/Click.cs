@@ -13,19 +13,35 @@ public class Click : MonoBehaviour
     public AudioClip[] touchSound;
     public AudioSource audioSource;
     public MonsterData monsterData;
+    public MonsterStatus monsterStatus;
 
     //프리팹으로 만들어진 오브젝트 생성
     public GameObject HammerPrefab;
 
     //[SerializeField] Button Upgrade;
-   
+
     private void Start()
     {
         StopCoroutine(AutoAttack());
         autoAttackCoroutine = StartCoroutine(AutoAttack());
         //Upgrade.onClick.AddListener(UpgradeBtn);
-    }
+        if (GameManager.Instance == null)
+        {
+            Debug.LogError("GameManager.Instance가 null입니다!");
+            return;
+        }
 
+        if (GameManager.Instance.playerData == null)
+        {
+            Debug.LogError("GameManager.Instance.playerData가 null입니다!");
+            return;
+        }
+        monsterStatus = FindObjectOfType<MonsterStatus>();
+    }
+    public void SetTarget(MonsterStatus newTarget)
+    {
+        monsterStatus = newTarget;
+    }
 
     public void AttackBtn()
     {
@@ -35,19 +51,22 @@ public class Click : MonoBehaviour
     
     void Attack()
     {
+        if (monsterStatus == null) return;
         if (Random.Range(0, 100) < criticalChance)
         {
             audioSource.PlayOneShot(touchSound[0]);
             Debug.Log("Critical");
             criticalParticle.Play();
-            TestData.instance.Damage(20);
+            //TestData.instance.Damage(20);
+            monsterStatus.TakeDamage(GameManager.Instance.playerData.criticalDamage);
         }
         else
         {
             audioSource.PlayOneShot(touchSound[1]);
             Debug.Log("Attack");
             attackParticle.Play();
-            TestData.instance.Damage(10);
+            //TestData.instance.Damage(10);
+            monsterStatus.TakeDamage(GameManager.Instance.playerData.attackPower);
         }
     }
 
@@ -79,7 +98,7 @@ public class Click : MonoBehaviour
     void TouchPos()
     {
         Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Instantiate(HammerPrefab, pos, Quaternion.identity);
+        //Instantiate(HammerPrefab, pos, Quaternion.identity);
         attackParticle.transform.position = pos;
         criticalParticle.transform.position = pos;
 
@@ -88,7 +107,7 @@ public class Click : MonoBehaviour
     void AutoPos()
     {
         Vector2 pos = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width / 2, Screen.height / 2));
-        Instantiate(HammerPrefab, pos, Quaternion.identity);
+        //Instantiate(HammerPrefab, pos, Quaternion.identity);
         attackParticle.transform.position = pos;
         criticalParticle.transform.position = pos;
     }
