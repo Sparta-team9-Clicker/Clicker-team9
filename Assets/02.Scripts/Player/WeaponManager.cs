@@ -5,34 +5,47 @@ using UnityEngine;
 public class WeaponManager : MonoBehaviour
 {
     public Weapon weapon;  // 무기 데이터
-    public int currentUpgradeLevel;
 
-    void Start()
+    private void Start()
     {
-        currentUpgradeLevel = weapon.currentUpgradeLevel;
         DisplayWeaponStats();
     }
 
     public void UpgradeWeapon()
     {
-        if (weapon.currentUpgradeLevel < weapon.weaponStats.maxUpgradeLevel)
+        if (weapon == null || weapon.weaponStats == null)
         {
-            weapon.currentUpgradeLevel++;
-            DisplayWeaponStats();
+            Debug.LogWarning("무기나 무기 스탯 정보가 없습니다.");
+            return;
         }
-        else
+
+        // 강화 가능 여부 확인
+        if (weapon.currentUpgradeLevel >= weapon.weaponStats.maxUpgradeLevel)
         {
-            Debug.Log("Max upgrade level reached!");
+            Debug.Log("최대 강화 레벨에 도달했습니다.");
+            return;
         }
+
+        weapon.currentUpgradeLevel++;
+        Debug.Log($"무기 강화 성공! 현재 레벨: {weapon.currentUpgradeLevel}");
+        DisplayWeaponStats();
     }
 
-    void DisplayWeaponStats()
+    public void DisplayWeaponStats()
     {
+        if (weapon == null || weapon.weaponStats == null)
+        {
+            Debug.LogWarning("무기 정보가 없습니다.");
+            return;
+        }
+
         int attackPower = weapon.GetAttackPower();
         float critChance = weapon.GetCritChance();
-        Debug.Log($"{weapon.weaponName} (Level {weapon.currentUpgradeLevel}): Attack Power = {attackPower}, Crit Chance = {critChance * 100}% ");
+
+        Debug.Log($"{weapon.weaponName} (Lv. {weapon.currentUpgradeLevel})\n" +
+                  $"공격력: {attackPower}, 치명타 확률: {critChance * 100:F1}%");
     }
-
-
 }
+
+
 

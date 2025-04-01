@@ -34,8 +34,14 @@ public class PlayerStat : MonoBehaviour
 
     public TextMeshProUGUI weaponInfoText; // 무기 정보 UI 텍스트
 
-    private void Start()
+    private void Awake()
     {
+        if (GameManager.Instance == null || GameManager.Instance.playerData == null)
+        {
+            Debug.LogError("GameManager 또는 PlayerData가 초기화되지 않았습니다.");
+            return;
+        }
+
         playerData = GameManager.Instance.playerData;
 
         powerStat = new PowerStat(playerData, this);
@@ -49,17 +55,26 @@ public class PlayerStat : MonoBehaviour
         panel.SetActive(false);
         equipPanel.SetActive(false);
         weaponIcon.SetActive(false);
+    }
+
+    private void Start()
+    {
         UpdateUI();
     }
 
     private void Update()
     {
-        goldStat.Gold();
-        goldText.text = $"{playerData.gold.ToString("N0")}";
+        if (goldStat != null)
+            goldStat.Gold();
+
+        if (playerData != null && goldText != null)
+            goldText.text = $"{playerData.gold.ToString("N0")}";
     }
 
     private void UpdateUI()
     {
+        if (playerData == null) return;
+
         powerText.text = $"{playerData.attackPower.ToString("N0")}";
         criticalText.text = $"Critical {playerData.critical.ToString("N2")}%";
         criticalDamageText.text = $"CriticalDamage {playerData.criticalDamage.ToString("N0")}%";
