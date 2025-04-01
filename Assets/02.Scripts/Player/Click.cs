@@ -3,25 +3,19 @@ using UnityEngine;
 
 public class Click : MonoBehaviour
 {
-    private float autoAttackTime = 0f;
-    //public int criticalChance = 5;
+    private float autoAttackTime = 0f;    
     private Coroutine autoAttackCoroutine;
     public ParticleSystem attackParticle;
     public ParticleSystem criticalParticle;
-    public AudioClip[] touchSound;
-    public AudioSource audioSource;
     public MonsterData monsterData;
     public MonsterStatus monsterStatus;
 
-    //public GameObject HammerPrefab;
-
-    //[SerializeField] Button Upgrade;
+    public GameObject panel;
 
     private void Start()
     {
         StopCoroutine(AutoAttack());
-        autoAttackCoroutine = StartCoroutine(AutoAttack());
-        //Upgrade.onClick.AddListener(UpgradeBtn);
+        autoAttackCoroutine = StartCoroutine(AutoAttack());        
         monsterStatus = FindObjectOfType<MonsterStatus>();
     }
     public void SetTarget(MonsterStatus newTarget)
@@ -34,67 +28,71 @@ public class Click : MonoBehaviour
         TouchPos();
         Attack();
     }
-    
+
     void Attack()
     {
         if (monsterStatus == null) return;
         if (Random.Range(0, 100) < GameManager.Instance.playerData.critical)
         {
-            audioSource.PlayOneShot(touchSound[0]);
-            Debug.Log("Critical");
+            AudioManager.instance.PlaySfx(AudioManager.Sfxs.Attack);            
             criticalParticle.Play();
-            //TestData.instance.Damage(20);
             monsterStatus.TakeDamage(GameManager.Instance.playerData.criticalDamage);
         }
         else
         {
-            audioSource.PlayOneShot(touchSound[1]);
-            Debug.Log("Attack");
+            AudioManager.instance.PlaySfx(AudioManager.Sfxs.Attack);            
             attackParticle.Play();
-            //TestData.instance.Damage(10);
             monsterStatus.TakeDamage(GameManager.Instance.playerData.attackPower);
         }
     }
 
     IEnumerator AutoAttack()
     {
-        while (true) 
+        while (true)
         {
             AutoPos();
             yield return new WaitForSeconds(1f / autoAttackTime);
-            Attack(); 
+            Attack();
         }
     }
 
     public void AutoUpgradeBtn()
     {
-        autoAttackTime += 0.3f;
-        Debug.Log("Upgrade");
+        if (GameManager.Instance.playerData.gold >= 50000)
+        {
+            GameManager.Instance.playerData.gold -= 50000;
+            AudioManager.instance.PlaySfx(AudioManager.Sfxs.Button);
 
-        StopCoroutine(autoAttackCoroutine);
-        autoAttackCoroutine = StartCoroutine(AutoAttack());
+            autoAttackTime += 0.3f;
+            GameManager.Instance.SaveData();
+            
+            StopCoroutine(autoAttackCoroutine);
+            autoAttackCoroutine = StartCoroutine(AutoAttack());
+        }
+        else
+        {            
+            StartCoroutine(ShowPanel());
+        }
     }
 
-    //public void CriUpgradeBtn()
-    //{
-    //    criticalChance += 5;
-    //    Debug.Log("Upgrade Critical");
-    //}
+    IEnumerator ShowPanel()
+    {
+        AudioManager.instance.PlaySfx(AudioManager.Sfxs.Fail);
+        panel.SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+        panel.SetActive(false);
+    }    
 
     void TouchPos()
-    {
-        //Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        //Instantiate(HammerPrefab, pos, Quaternion.identity);
+    {        
         Vector2 pos = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width / 2, Screen.height / 2));
         attackParticle.transform.position = pos;
         criticalParticle.transform.position = pos;
-
     }
 
     void AutoPos()
     {
-        Vector2 pos = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width / 2, Screen.height / 2));
-        //Instantiate(HammerPrefab, pos, Quaternion.identity);
+        Vector2 pos = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width / 2, Screen.height / 2));        
         attackParticle.transform.position = pos;
         criticalParticle.transform.position = pos;
     }
