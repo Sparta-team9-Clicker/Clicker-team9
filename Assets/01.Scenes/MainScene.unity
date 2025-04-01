@@ -1173,7 +1173,7 @@ MonoBehaviour:
   panel: {fileID: 791254344}
   equipPanel: {fileID: 782590507}
   escapeInventory: {fileID: 1867405801}
-  weaponIcon: {fileID: 0}
+  weaponIcon: {fileID: 1991447610}
   weaponUpgrade: {fileID: 0}
   weaponManager: {fileID: 0}
   weaponInfoText: {fileID: 0}
@@ -8076,6 +8076,10 @@ PrefabInstance:
     - target: {fileID: 8493054614884873930, guid: e4632ff050de68e46a7538f5da4f28e2, type: 3}
       propertyPath: m_Name
       value: Weapone
+      objectReference: {fileID: 0}
+    - target: {fileID: 8493054614884873930, guid: e4632ff050de68e46a7538f5da4f28e2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
