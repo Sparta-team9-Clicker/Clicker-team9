@@ -72,5 +72,6 @@ public class SceneLoad : MonoBehaviour
 
         yield return Fade(0f);
         fadeImage.gameObject.SetActive(false);
+        StageManager.Instance.NextStage();
     }
 }

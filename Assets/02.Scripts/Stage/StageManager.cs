@@ -48,7 +48,7 @@ public class StageManager : MonoBehaviour
         SpawnMonster();
     }
 
-    public void SpawnMonster()
+    private void SpawnMonster()
     {
 
         MonsterData selectedMonster = monsters[Random.Range(0, monsters.Count)];
@@ -84,7 +84,7 @@ public class StageManager : MonoBehaviour
             else
             {
                 StartCoroutine(SceneLoad.instance.TransitionStage());
-                NextStage();
+                
             }
         }
         else
@@ -93,7 +93,7 @@ public class StageManager : MonoBehaviour
         }
     }
 
-    private void NextStage()
+    public void NextStage()
     {
         if (currentStage == StageType.Hard)
         {
