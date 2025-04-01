@@ -23,11 +23,10 @@ public class WeaponUI : MonoBehaviour
         if (weapon != null)
         {
             playerInventory.EquipWeapon(weapon);
-            Debug.Log("Equipped " + weapon.weaponName);
         }
         else
         {
-            Debug.LogError("Weapon is null!");
+
         }
     }
 
