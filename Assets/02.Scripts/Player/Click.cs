@@ -4,7 +4,7 @@ using UnityEngine;
 public class Click : MonoBehaviour
 {
     private float autoAttackTime = 0f;
-    public int criticalChance = 5;
+    //public int criticalChance = 5;
     private Coroutine autoAttackCoroutine;
     public ParticleSystem attackParticle;
     public ParticleSystem criticalParticle;
@@ -38,9 +38,9 @@ public class Click : MonoBehaviour
     void Attack()
     {
         if (monsterStatus == null) return;
-        if (Random.Range(0, 100) < criticalChance)
+        if (Random.Range(0, 100) < GameManager.Instance.playerData.critical)
         {
-            //audioSource.PlayOneShot(touchSound[0]);
+            audioSource.PlayOneShot(touchSound[0]);
             Debug.Log("Critical");
             criticalParticle.Play();
             //TestData.instance.Damage(20);
@@ -48,7 +48,7 @@ public class Click : MonoBehaviour
         }
         else
         {
-            //audioSource.PlayOneShot(touchSound[1]);
+            audioSource.PlayOneShot(touchSound[1]);
             Debug.Log("Attack");
             attackParticle.Play();
             //TestData.instance.Damage(10);
@@ -75,11 +75,11 @@ public class Click : MonoBehaviour
         autoAttackCoroutine = StartCoroutine(AutoAttack());
     }
 
-    public void CriUpgradeBtn()
-    {
-        criticalChance += 5;
-        Debug.Log("Upgrade Critical");
-    }
+    //public void CriUpgradeBtn()
+    //{
+    //    criticalChance += 5;
+    //    Debug.Log("Upgrade Critical");
+    //}
 
     void TouchPos()
     {
