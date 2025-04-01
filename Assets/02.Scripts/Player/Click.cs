@@ -13,14 +13,14 @@ public class Click : MonoBehaviour
     public MonsterData monsterData;
     public MonsterStatus monsterStatus;
 
-    public GameObject HammerPrefab;
+    //public GameObject HammerPrefab;
 
     //[SerializeField] Button Upgrade;
 
     private void Start()
     {
         StopCoroutine(AutoAttack());
-        //autoAttackCoroutine = StartCoroutine(AutoAttack());
+        autoAttackCoroutine = StartCoroutine(AutoAttack());
         //Upgrade.onClick.AddListener(UpgradeBtn);
         monsterStatus = FindObjectOfType<MonsterStatus>();
     }
@@ -83,9 +83,9 @@ public class Click : MonoBehaviour
 
     void TouchPos()
     {
-        Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Instantiate(HammerPrefab, pos, Quaternion.identity);
-        pos = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width / 2, Screen.height / 2));
+        //Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        //Instantiate(HammerPrefab, pos, Quaternion.identity);
+        Vector2 pos = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width / 2, Screen.height / 2));
         attackParticle.transform.position = pos;
         criticalParticle.transform.position = pos;
 
