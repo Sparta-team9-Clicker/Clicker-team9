@@ -20,7 +20,6 @@ public class WeaponManager : MonoBehaviour
     {
         if (weapon == null || weapon.weaponStats == null)
         {
-            Debug.LogWarning("무기나 무기 스탯 정보가 없습니다.");
             return;
         }
 
@@ -33,7 +32,6 @@ public class WeaponManager : MonoBehaviour
 
         GameManager.Instance.playerData.weaponUpgrade++;
         //weapon.currentUpgradeLevel++;
-        Debug.Log($"무기 강화 성공! 현재 레벨: {GameManager.Instance.playerData.weaponUpgrade}");
         DisplayWeaponStats();
     }
 
@@ -41,7 +39,6 @@ public class WeaponManager : MonoBehaviour
     {
         if (weapon == null || weapon.weaponStats == null)
         {
-            Debug.LogWarning("무기 정보가 없습니다.");
             return;
         }               
                
