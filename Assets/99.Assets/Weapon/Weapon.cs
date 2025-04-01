@@ -17,7 +17,8 @@ public class Weapon : ScriptableObject
     {
         if (weaponStats != null)
         {
-            return weaponStats.GetAttackPowerAtLevel(currentUpgradeLevel);
+            
+            return attackPower + (currentUpgradeLevel * 10);  // 예시로 각 강화 단계마다 10씩 증가
         }
         else
         {
