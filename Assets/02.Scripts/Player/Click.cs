@@ -25,7 +25,7 @@ public class Click : MonoBehaviour
 
     public void AttackBtn()
     {
-        TouchPos();
+        //TouchPos();
         Attack();
     }
 
@@ -50,7 +50,7 @@ public class Click : MonoBehaviour
     {
         while (true)
         {
-            AutoPos();
+            //AutoPos();
             yield return new WaitForSeconds(1f / autoAttackTime);
             Attack();
         }
