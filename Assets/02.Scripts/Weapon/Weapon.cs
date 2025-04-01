@@ -12,6 +12,13 @@ public class Weapon : ScriptableObject
     public int currentUpgradeLevel;  // 현재 강화 단계
     public WeaponStats weaponStats;  // 능력치 테이블 참조
 
+    public void Update()
+    {
+        currentUpgradeLevel++;
+        attackPower = GetAttackPower();
+    }
+
+
     // 강화된 공격력 계산
     public int GetAttackPower()
     {
