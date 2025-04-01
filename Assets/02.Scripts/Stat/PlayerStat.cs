@@ -50,12 +50,12 @@ public class PlayerStat : MonoBehaviour
     private void UpdateUI()
     {
         powerText.text = $"{playerData.attackPower.ToString("N0")}";
-        criticalText.text = $"Critical {playerData.critical.ToString("N2")}%";
-        criticalDamageText.text = $"CriticalDamage {playerData.criticalDamage.ToString("N0")}%";
-        powerNeedGoldText.text = $"Power ({TotalCost(playerData.attackUpgrade):N0})";
-        goldNeedGoldText.text = $"Gold ({TotalCost(playerData.goldBonusUpgrade):N0})";
-        criticalNeedGoldText.text = $"Critical ({TotalCost(playerData.criticalUpgrade):N0})";
-        criticalDamageNeedGoldText.text = $"Critical Damage ({TotalCost(playerData.criticalDamageUpgrade):N0})";
+        criticalText.text = $"{playerData.critical.ToString("N2")}%";
+        criticalDamageText.text = $"{playerData.criticalDamage.ToString("N0")}%";
+        powerNeedGoldText.text = $"{TotalCost(playerData.attackUpgrade):N0}";
+        goldNeedGoldText.text = $"{TotalCost(playerData.goldBonusUpgrade):N0}";
+        criticalNeedGoldText.text = $"{TotalCost(playerData.criticalUpgrade):N0}";
+        criticalDamageNeedGoldText.text = $"{TotalCost(playerData.criticalDamageUpgrade):N0}";
         GameManager.Instance.SaveData();
     }
 

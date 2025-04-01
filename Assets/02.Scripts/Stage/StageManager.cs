@@ -44,7 +44,7 @@ public class StageManager : MonoBehaviour
         UpdateStageName();
         killcountText.text = killCount.ToString();
         monsterToKillCountUI.text = monsterToKillCount.ToString();
-        
+
         SpawnMonster();
     }
 
@@ -72,13 +72,12 @@ public class StageManager : MonoBehaviour
     {
         killCount++;
         killcountText.text = killCount.ToString();
-        
+
         if (killCount >= monsterToKillCount)
         {
-           
-            
             if (currentStage == StageType.Hard)
             {
+                AudioManager.instance.StopBgm();
                 AudioManager.instance.PlaySfx(AudioManager.Sfxs.Clear);
                 SceneLoad.instance.ChangeScene("EndingScene");
             }
@@ -98,11 +97,13 @@ public class StageManager : MonoBehaviour
     {
         if (currentStage == StageType.Hard)
         {
-            return;  
+            return;
         }
-        killCount = 0;
-        currentStage = (StageType)(((int)currentStage + 1) % 3); 
 
+        killCount = 0;
+        currentStage = (StageType)(((int)currentStage + 1) % 3);
+
+        StageBgm();
         monsters.Clear();
         UpdateStageName();
         foreach (var monster in monsterDataTable.monsters)
@@ -112,7 +113,7 @@ public class StageManager : MonoBehaviour
         }
 
         if (monsters.Count == 0) return;
-        killcountText.text = killCount.ToString(); 
+        killcountText.text = killCount.ToString();
         monsterToKillCountUI.text = monsterToKillCount.ToString();
 
         SpawnMonster();
@@ -138,6 +139,18 @@ public class StageManager : MonoBehaviour
                 stageName.text = "3. º¸½º»ó¾î¿Õ";
                 monsterToKillCount = 1;
                 break;
+        }
+    }
+
+    public void StageBgm()
+    {
+        if (currentStage == StageType.Normal)
+        {
+            AudioManager.instance.PlayBgm(AudioManager.Bgms.Stage2);
+        }
+        else if (currentStage == StageType.Hard)
+        {
+            AudioManager.instance.PlayBgm(AudioManager.Bgms.Stage3);
         }
     }
 }
