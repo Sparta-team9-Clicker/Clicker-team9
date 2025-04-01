@@ -23,18 +23,20 @@ public class Click : MonoBehaviour
         monsterStatus = newTarget;
     }
 
+    //공격 버튼
     public void AttackBtn()
     {
         //TouchPos();
         Attack();
     }
 
+    //크리티컬과 일반공격 구분
     void Attack()
     {
         if (monsterStatus == null) return;
         if (Random.Range(0, 100) < GameManager.Instance.playerData.critical)
         {
-            AudioManager.instance.PlaySfx(AudioManager.Sfxs.Attack);            
+            AudioManager.instance.PlaySfx(AudioManager.Sfxs.Button);            
             criticalParticle.Play();
             monsterStatus.TakeDamage(GameManager.Instance.playerData.criticalDamage);
         }
@@ -46,6 +48,7 @@ public class Click : MonoBehaviour
         }
     }
 
+    //자동공격
     IEnumerator AutoAttack()
     {
         while (true)
@@ -56,6 +59,7 @@ public class Click : MonoBehaviour
         }
     }
 
+    //자동공격 업그레이드
     public void AutoUpgradeBtn()
     {
         if (GameManager.Instance.playerData.gold >= 10000)
