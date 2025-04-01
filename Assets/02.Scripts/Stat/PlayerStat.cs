@@ -15,8 +15,7 @@ public class PlayerStat : MonoBehaviour
     public TextMeshProUGUI powerText;
     public TextMeshProUGUI goldText;
     public TextMeshProUGUI criticalText;
-    public TextMeshProUGUI criticalDamageText;
-    public TextMeshProUGUI stageText;
+    public TextMeshProUGUI criticalDamageText;    
 
     public TextMeshProUGUI powerNeedGoldText;
     public TextMeshProUGUI goldNeedGoldText;

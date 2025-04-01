@@ -15,6 +15,7 @@ public class GoldStat : StatBase
 
     public void Gold()
     {
-        playerData.gold += playerData.goldBonusUpgrade;
+        if (playerData.gold <= 2000000000)
+            playerData.gold += playerData.goldBonusUpgrade;
     }
 }
