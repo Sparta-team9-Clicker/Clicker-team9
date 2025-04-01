@@ -75,31 +75,30 @@ public class PlayerStat : MonoBehaviour
         if (playerData == null) return;
 
         powerText.text = $"{playerData.attackPower.ToString("N0")}";
-
-        criticalText.text = $"Critical {playerData.critical.ToString("N2")}%";
-        criticalDamageText.text = $"CriticalDamage {playerData.criticalDamage.ToString("N0")}%";
-        powerNeedGoldText.text = $"Power ({TotalCost(playerData.attackUpgrade):N0})";
-        goldNeedGoldText.text = $"Gold ({TotalCost(playerData.goldBonusUpgrade):N0})";
-        criticalNeedGoldText.text = $"Critical ({TotalCost(playerData.criticalUpgrade):N0})";
-        criticalDamageNeedGoldText.text = $"Critical Damage ({TotalCost(playerData.criticalDamageUpgrade):N0})";
+        criticalText.text = $"{playerData.critical.ToString("N2")}%";
+        criticalDamageText.text = $"{playerData.criticalDamage.ToString("N0")}%";
+        powerNeedGoldText.text = $"{TotalCost(playerData.attackUpgrade):N0}";
+        goldNeedGoldText.text = $"{TotalCost(playerData.goldBonusUpgrade):N0}";
+        criticalNeedGoldText.text = $"{TotalCost(playerData.criticalUpgrade):N0}";
+        criticalDamageNeedGoldText.text = $"{TotalCost(playerData.criticalDamageUpgrade):N0}";
 
         UpdateWeaponUI();
-
 
         GameManager.Instance.SaveData();
     }
 
     private void UpdateWeaponUI()
     {
-        if (weaponManager != null && weaponManager.weapon != null && weaponInfoText != null)
-        {
-            var weapon = weaponManager.weapon;
-            string info = $"{weapon.weaponName}\n" +
-                          $"Level: {weapon.currentUpgradeLevel}/{weapon.weaponStats.maxUpgradeLevel}\n" +
-                          $"Attack: {weapon.GetAttackPower()}\n" +
-                          $"Crit Chance: {weapon.GetCritChance() * 100f:F1}%";
-            weaponInfoText.text = info;
-        }
+        //if (weaponManager != null && weaponManager.weapon != null && weaponInfoText != null)
+        //{
+        //    var weapon = weaponManager.weapon;
+        //    string info = $"{weapon.weaponName}\n" +
+        //                  $"Level: {weapon.currentUpgradeLevel}/{weapon.weaponStats.maxUpgradeLevel}\n" +
+        //                  $"Attack: {weapon.GetAttackPower()}\n" +
+        //                  $"Crit Chance: {weapon.GetCritChance() * 100f:F1}%";
+        //    weaponInfoText.text = info;
+        //}
+        weaponInfoText.text = "강화하기";
     }
 
     public int TotalCost(int upgradeLevel)
@@ -188,18 +187,21 @@ public class PlayerStat : MonoBehaviour
 
     public void OnClickEQPanel()
     {
+        AudioManager.instance.PlaySfx(AudioManager.Sfxs.Button);
         equipPanel.SetActive(true);
         Btns.SetActive(false);
     }
 
     public void OnClickEscapeInventory()
     {
+        AudioManager.instance.PlaySfx(AudioManager.Sfxs.Button);
         equipPanel.SetActive(false);
         Btns.SetActive(true);
     }
 
     public void DisplayWeapon()
     {
+        AudioManager.instance.PlaySfx(AudioManager.Sfxs.Button);
         weaponIcon.SetActive(true);
     }
 
