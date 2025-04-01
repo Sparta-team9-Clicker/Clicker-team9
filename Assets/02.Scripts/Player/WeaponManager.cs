@@ -39,11 +39,14 @@ public class WeaponManager : MonoBehaviour
             return;
         }
 
-        int attackPower = weapon.GetAttackPower();
-        float critChance = weapon.GetCritChance();
+        GameManager.Instance.playerData.attackPower += 10;
+        GameManager.Instance.playerData.critical += 1;
 
-        Debug.Log($"{weapon.weaponName} (Lv. {weapon.currentUpgradeLevel})\n" +
-                  $"공격력: {attackPower}, 치명타 확률: {critChance * 100:F1}%");
+        //int attackPower = weapon.GetAttackPower();
+        //float critChance = weapon.GetCritChance();
+
+        //Debug.Log($"{weapon.weaponName} (Lv. {weapon.currentUpgradeLevel})\n" +
+        //          $"공격력: {attackPower}, 치명타 확률: {critChance * 100:F1}%");
     }
 }
 

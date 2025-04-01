@@ -11,8 +11,9 @@ public class PlayerData
     public int criticalUpgrade;
     public int criticalDamageUpgrade;
     public bool Eqiup;
+    public int weaponUpgrade;
 
-    public PlayerData(int stage, int attackPower, int criticalDamage, float critical, int gold, int goldBonusUpgrade,int attackUpgrade, int criticalUpgrade, int criticalDamageUpgrade, bool eqiup)
+    public PlayerData(int stage, int attackPower, int criticalDamage, float critical, int gold, int goldBonusUpgrade,int attackUpgrade, int criticalUpgrade, int criticalDamageUpgrade, bool eqiup, int weaponUpgrade)
     {
         this.stage = stage;
         this.attackPower = attackPower;
@@ -24,5 +25,6 @@ public class PlayerData
         this.criticalUpgrade = criticalUpgrade;
         this.criticalDamageUpgrade = criticalDamageUpgrade;
         Eqiup = eqiup;
+        this.weaponUpgrade = weaponUpgrade;
     }
 }
