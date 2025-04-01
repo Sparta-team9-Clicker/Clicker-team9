@@ -14,8 +14,9 @@ public class Weapon : ScriptableObject
 
     public void Update()
     {
-        currentUpgradeLevel++;
-        attackPower = GetAttackPower();
+        currentUpgradeLevel = GameManager.Instance.playerData.weaponUpgrade;
+        //currentUpgradeLevel++;
+        //attackPower = GetAttackPower();
     }
 
 

@@ -1,14 +1,19 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class WeaponManager : MonoBehaviour
 {
     public Weapon weapon;  // 무기 데이터
 
+    public GameObject panel; // 돈 부족 판넬
+    public GameObject equippanel;
+    public GameObject btns;
+    
     private void Start()
     {
-        DisplayWeaponStats();
+        //DisplayWeaponStats();
+        equippanel.gameObject.SetActive(false);
+        btns.gameObject.SetActive(true);
     }
 
     public void UpgradeWeapon()
@@ -20,14 +25,15 @@ public class WeaponManager : MonoBehaviour
         }
 
         // 강화 가능 여부 확인
-        if (weapon.currentUpgradeLevel >= weapon.weaponStats.maxUpgradeLevel)
-        {
-            Debug.Log("최대 강화 레벨에 도달했습니다.");
-            return;
-        }
+        //if (GameManager.Instance.playerData.weaponUpgrade >= weapon.weaponStats.maxUpgradeLevel)
+        //{
+        //    Debug.Log("최대 강화 레벨에 도달했습니다.");
+        //    return;
+        //}        
 
-        weapon.currentUpgradeLevel++;
-        Debug.Log($"무기 강화 성공! 현재 레벨: {weapon.currentUpgradeLevel}");
+        GameManager.Instance.playerData.weaponUpgrade++;
+        //weapon.currentUpgradeLevel++;
+        Debug.Log($"무기 강화 성공! 현재 레벨: {GameManager.Instance.playerData.weaponUpgrade}");
         DisplayWeaponStats();
     }
 
@@ -37,17 +43,14 @@ public class WeaponManager : MonoBehaviour
         {
             Debug.LogWarning("무기 정보가 없습니다.");
             return;
-        }
-
-        GameManager.Instance.playerData.attackPower += 10;
-        GameManager.Instance.playerData.critical += 1;
-
+        }               
+               
         //int attackPower = weapon.GetAttackPower();
         //float critChance = weapon.GetCritChance();
 
         //Debug.Log($"{weapon.weaponName} (Lv. {weapon.currentUpgradeLevel})\n" +
         //          $"공격력: {attackPower}, 치명타 확률: {critChance * 100:F1}%");
-    }
+    }   
 }
 
 

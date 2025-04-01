@@ -15,12 +15,13 @@ public class PlayerStat : MonoBehaviour
     public TextMeshProUGUI powerText;
     public TextMeshProUGUI goldText;
     public TextMeshProUGUI criticalText;
-    public TextMeshProUGUI criticalDamageText;    
+    public TextMeshProUGUI criticalDamageText;
 
     public TextMeshProUGUI powerNeedGoldText;
     public TextMeshProUGUI goldNeedGoldText;
     public TextMeshProUGUI criticalNeedGoldText;
     public TextMeshProUGUI criticalDamageNeedGoldText;
+    public TextMeshProUGUI weaponNeedGoldText;
 
     public GameObject Btns;
     public GameObject panel;
@@ -99,6 +100,7 @@ public class PlayerStat : MonoBehaviour
         //    weaponInfoText.text = info;
         //}
         weaponInfoText.text = "강화하기";
+        weaponNeedGoldText.text = $"{TotalCost(playerData.weaponUpgrade):N0}";
     }
 
     public int TotalCost(int upgradeLevel)
@@ -169,7 +171,7 @@ public class PlayerStat : MonoBehaviour
             goldStat.Upgrade();
             UpdateUI();
         }
-    }       
+    }
 
     IEnumerator ShowPanel()
     {
@@ -208,16 +210,29 @@ public class PlayerStat : MonoBehaviour
     public void WeaponUpgrade()
     {
         AudioManager.instance.PlaySfx(AudioManager.Sfxs.Button);
+        int totalCost = TotalCost(playerData.weaponUpgrade);
 
         if (weaponManager != null)
         {
-            weaponManager.UpgradeWeapon();
-            UpdateUI();
+            if (playerData.gold >= totalCost)
+            {
+                playerData.gold -= totalCost;
+                playerData.weaponUpgrade++;
+                playerData.attackPower += 10;
+                playerData.critical += 0.5f;
+                weaponManager.UpgradeWeapon();
+                UpdateUI();
+                GameManager.Instance.SaveData();
+            }
+            else
+            {
+                StartCoroutine(ShowPanel());
+            }
         }
         else
         {
             Debug.LogWarning("WeaponManager가 연결되지 않았습니다.");
         }
-    }
+    }   
 }
 

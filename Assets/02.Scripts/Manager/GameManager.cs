@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
         if (playerData == null || (playerData.attackPower == 0) && (playerData.gold == 0))
         {
             print("저장된 파일이 없습니다.");
-            playerData = new PlayerData(1, 10, 120, 5f, 1000, 0, 0, 0, 0, false, 1);
+            playerData = new PlayerData(1, 10, 120, 5f, 1000, 0, 0, 0, 0, false, 0);
             SaveData();
         }
     }
