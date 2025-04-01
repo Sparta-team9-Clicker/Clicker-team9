@@ -11,6 +11,7 @@ public class WeaponUI : MonoBehaviour
 
     public GameObject weaponIcon;  // 무기 아이콘
 
+   
     void Start()
     {
         equipButton.onClick.AddListener(OnEquipWeapon);
