@@ -1024,6 +1024,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8952738852972327831, guid: 2d6e8383b411be343980203265adc4f8, type: 3}
+      propertyPath: bgmClips.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8952738852972327831, guid: 2d6e8383b411be343980203265adc4f8, type: 3}
+      propertyPath: bgmClips.Array.data[2].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6b99e4ca54feb1c499bd45b2c95dfde1, type: 3}
+    - target: {fileID: 8952738852972327831, guid: 2d6e8383b411be343980203265adc4f8, type: 3}
+      propertyPath: bgmClips.Array.data[2].type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8952738852972327831, guid: 2d6e8383b411be343980203265adc4f8, type: 3}
+      propertyPath: bgmClips.Array.data[3].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 845f28f9ae11b4b4181d3f627c5c4a1f, type: 3}
+    - target: {fileID: 8952738852972327831, guid: 2d6e8383b411be343980203265adc4f8, type: 3}
+      propertyPath: bgmClips.Array.data[3].type
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 9104203202615515373, guid: 2d6e8383b411be343980203265adc4f8, type: 3}
       propertyPath: m_Name
       value: AudioManager
