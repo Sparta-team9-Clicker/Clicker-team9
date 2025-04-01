@@ -26,6 +26,12 @@ public class PlayerStat : MonoBehaviour
     public GameObject panel;
     public GameObject equipPanel;
     public GameObject escapeInventory;
+    public GameObject weaponIcon;
+    public GameObject weaponUpgrade;
+
+    public WeaponManager weaponManager;
+
+    public TextMeshProUGUI weaponInfoText; // 무기 정보 UI 텍스트
 
     private void Start()
     {
@@ -36,8 +42,12 @@ public class PlayerStat : MonoBehaviour
         criticalDamageStat = new CriticalDamageStat(playerData, this);
         goldStat = new GoldStat(playerData, this);
 
+        if (weaponManager == null)
+            weaponManager = FindObjectOfType<WeaponManager>();
+
         panel.SetActive(false);
         equipPanel.SetActive(false);
+        weaponIcon.SetActive(false);
         UpdateUI();
     }
 
@@ -50,13 +60,31 @@ public class PlayerStat : MonoBehaviour
     private void UpdateUI()
     {
         powerText.text = $"{playerData.attackPower.ToString("N0")}";
-        criticalText.text = $"{playerData.critical.ToString("N2")}%";
-        criticalDamageText.text = $"{playerData.criticalDamage.ToString("N0")}%";
-        powerNeedGoldText.text = $"{TotalCost(playerData.attackUpgrade):N0}";
-        goldNeedGoldText.text = $"{TotalCost(playerData.goldBonusUpgrade):N0}";
-        criticalNeedGoldText.text = $"{TotalCost(playerData.criticalUpgrade):N0}";
-        criticalDamageNeedGoldText.text = $"{TotalCost(playerData.criticalDamageUpgrade):N0}";
+
+        criticalText.text = $"Critical {playerData.critical.ToString("N2")}%";
+        criticalDamageText.text = $"CriticalDamage {playerData.criticalDamage.ToString("N0")}%";
+        powerNeedGoldText.text = $"Power ({TotalCost(playerData.attackUpgrade):N0})";
+        goldNeedGoldText.text = $"Gold ({TotalCost(playerData.goldBonusUpgrade):N0})";
+        criticalNeedGoldText.text = $"Critical ({TotalCost(playerData.criticalUpgrade):N0})";
+        criticalDamageNeedGoldText.text = $"Critical Damage ({TotalCost(playerData.criticalDamageUpgrade):N0})";
+
+        UpdateWeaponUI();
+
+
         GameManager.Instance.SaveData();
+    }
+
+    private void UpdateWeaponUI()
+    {
+        if (weaponManager != null && weaponManager.weapon != null && weaponInfoText != null)
+        {
+            var weapon = weaponManager.weapon;
+            string info = $"{weapon.weaponName}\n" +
+                          $"Level: {weapon.currentUpgradeLevel}/{weapon.weaponStats.maxUpgradeLevel}\n" +
+                          $"Attack: {weapon.GetAttackPower()}\n" +
+                          $"Crit Chance: {weapon.GetCritChance() * 100f:F1}%";
+            weaponInfoText.text = info;
+        }
     }
 
     public int TotalCost(int upgradeLevel)
@@ -143,15 +171,36 @@ public class PlayerStat : MonoBehaviour
         GameManager.Instance.SaveData();
     }
 
-    public void OnClickEQPanel() 
+    public void OnClickEQPanel()
     {
         equipPanel.SetActive(true);
         Btns.SetActive(false);
     }
 
-    public void OnClickEscapeInventory() 
+    public void OnClickEscapeInventory()
     {
         equipPanel.SetActive(false);
         Btns.SetActive(true);
     }
+
+    public void DisplayWeapon()
+    {
+        weaponIcon.SetActive(true);
+    }
+
+    public void WeaponUpgrade()
+    {
+        AudioManager.instance.PlaySfx(AudioManager.Sfxs.Button);
+
+        if (weaponManager != null)
+        {
+            weaponManager.UpgradeWeapon();
+            UpdateUI();
+        }
+        else
+        {
+            Debug.LogWarning("WeaponManager가 연결되지 않았습니다.");
+        }
+    }
 }
+
