@@ -23,6 +23,7 @@ public class PlayerStat : MonoBehaviour
     public TextMeshProUGUI criticalNeedGoldText;
     public TextMeshProUGUI criticalDamageNeedGoldText;
 
+    public GameObject Btns;
     public GameObject panel;
     public GameObject equipPanel;
     public GameObject escapeInventory;
@@ -169,10 +170,12 @@ public class PlayerStat : MonoBehaviour
     public void OnClickEQPanel() 
     {
         equipPanel.SetActive(true);
+        Btns.SetActive(false);
     }
 
     public void OnClickEscapeInventory() 
     {
         equipPanel.SetActive(false);
+        Btns.SetActive(true);
     }
 }

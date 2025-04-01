@@ -25,10 +25,24 @@ public class Weapon : ScriptableObject
         }
     }
 
+    // 강화된 치명타 피해 배수 계산
+    public float GetCritMultiplier()
+    {
+        if (weaponStats != null)
+        {
+            return weaponStats.GetCritMultiplierAtLevel(currentUpgradeLevel);
+        }
+        else
+        {
+            return 2.0f;  // 기본 치명타 피해 배수 (2배)
+        }
+    }
+
     // 크리티컬 확률 계산 (예시로 강화 단계에 따라 증가하도록 설정)
     public float GetCritChance()
     {
         return critChance + (currentUpgradeLevel * 0.05f); // 예시로 각 강화 단계마다 5%씩 증가
     }
 }
+
 
