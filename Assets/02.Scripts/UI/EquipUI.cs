@@ -1,14 +1,15 @@
 using UnityEngine;
 
-public class UpgradeUI : MonoBehaviour
+public class EquipUI : MonoBehaviour
 {
     public GameObject upBtn;
     public GameObject downBtn;
 
-    public Animator btnAnim;
+    public Animator equipPanel;
 
-    public GameObject btns;
-    public GameObject equip;
+    public GameObject layout;
+    public GameObject escape;
+    public GameObject weapon;
 
     private void Start()
     {
@@ -20,7 +21,7 @@ public class UpgradeUI : MonoBehaviour
     {
         upBtn.gameObject.SetActive(false);
         downBtn.gameObject.SetActive(true);
-        btnAnim.SetBool("IsDown", false);
+        equipPanel.SetBool("IsDown", false);
         BtnTrue();
     }
 
@@ -28,19 +29,21 @@ public class UpgradeUI : MonoBehaviour
     {
         upBtn.gameObject.SetActive(true);
         downBtn.gameObject.SetActive(false);
-        btnAnim.SetBool("IsDown", true);
+        equipPanel.SetBool("IsDown", true);
         BtnFalse();
     }
 
     public void BtnFalse()
     {
-        btns.SetActive(false);
-        equip.SetActive(false);
+        layout.SetActive(false);
+        escape.SetActive(false);
+        weapon.SetActive(false);
     }
 
     public void BtnTrue()
     {
-        btns.SetActive(true);
-        equip.SetActive(true);
+        layout.SetActive(true);
+        escape.SetActive(true);
+        weapon.SetActive(true);
     }
 }

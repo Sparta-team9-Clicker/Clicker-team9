@@ -127,30 +127,7 @@ public class PlayerStat : MonoBehaviour
             goldStat.Upgrade();
             UpdateUI();
         }
-    }
-
-    public void OnClickEquip()
-    {
-        AudioManager.instance.PlaySfx(AudioManager.Sfxs.Button);
-        playerData.Eqiup = !playerData.Eqiup;
-        if (playerData.Eqiup)
-        {
-            playerData.attackPower += powerStat.equipPower;
-            powerText.text = $"{playerData.attackPower.ToString()}";
-        }
-        else
-        {
-            playerData.attackPower -= powerStat.equipPower;
-            powerText.text = $"{playerData.attackPower.ToString()}";
-        }
-        GameManager.Instance.SaveData();
-    }
-
-    public void OnClickMain()
-    {
-        AudioManager.instance.PlaySfx(AudioManager.Sfxs.Attack);
-        GameManager.Instance.SaveData();
-    }
+    }       
 
     IEnumerator ShowPanel()
     {
