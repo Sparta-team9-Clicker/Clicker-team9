@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 587f538b23d45e34490aec5e56860a24, type: 3}
   m_Name: HammerStats
   m_EditorClassIdentifier: 
-  baseAttackPower: 0
-  upgradeMultiplier: 0
-  critMultiplier: 0
-  maxUpgradeLevel: 0
+  baseAttackPower: 10
+  upgradeMultiplier: 0.05
+  maxUpgradeLevel: 10000
