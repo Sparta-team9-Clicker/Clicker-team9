@@ -30,8 +30,9 @@ public class WeaponManager : MonoBehaviour
     {
         int attackPower = weapon.GetAttackPower();
         float critChance = weapon.GetCritChance();
-        float critMultiplier = weapon.GetCritMultiplier();
-        Debug.Log($"{weapon.weaponName} (Level {weapon.currentUpgradeLevel}): Attack Power = {attackPower}, Crit Chance = {critChance * 100}%, Crit Multiplier = {critMultiplier}");
+        Debug.Log($"{weapon.weaponName} (Level {weapon.currentUpgradeLevel}): Attack Power = {attackPower}, Crit Chance = {critChance * 100}% ");
     }
+
+
 }
 
