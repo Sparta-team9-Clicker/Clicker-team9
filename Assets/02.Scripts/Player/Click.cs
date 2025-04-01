@@ -58,9 +58,9 @@ public class Click : MonoBehaviour
 
     public void AutoUpgradeBtn()
     {
-        if (GameManager.Instance.playerData.gold >= 50000)
+        if (GameManager.Instance.playerData.gold >= 10000)
         {
-            GameManager.Instance.playerData.gold -= 50000;
+            GameManager.Instance.playerData.gold -= 10000;
             AudioManager.instance.PlaySfx(AudioManager.Sfxs.Button);
 
             autoAttackTime += 0.3f;
