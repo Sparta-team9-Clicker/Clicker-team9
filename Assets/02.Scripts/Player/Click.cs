@@ -31,7 +31,7 @@ public class Click : MonoBehaviour
 
     public void AttackBtn()
     {
-        TouchPos();
+        //TouchPos();
         Attack();
     }
     
@@ -60,7 +60,7 @@ public class Click : MonoBehaviour
     {
         while (true) 
         {
-            AutoPos();
+            //AutoPos();
             yield return new WaitForSeconds(1f / autoAttackTime);
             Attack(); 
         }
@@ -83,20 +83,20 @@ public class Click : MonoBehaviour
 
     void TouchPos()
     {
-        //Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        //Instantiate(HammerPrefab, pos, Quaternion.identity);
-        Vector2 pos = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width / 2, Screen.height / 2));
-        attackParticle.transform.position = pos;
-        criticalParticle.transform.position = pos;
+        ////Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        ////Instantiate(HammerPrefab, pos, Quaternion.identity);
+        //Vector2 pos = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width / 2, Screen.height / 2));
+        //attackParticle.transform.position = pos;
+        //criticalParticle.transform.position = pos;
 
     }
 
     void AutoPos()
     {
-        Vector2 pos = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width / 2, Screen.height / 2));
-        //Instantiate(HammerPrefab, pos, Quaternion.identity);
-        attackParticle.transform.position = pos;
-        criticalParticle.transform.position = pos;
+        //Vector2 pos = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width / 2, Screen.height / 2));
+        ////Instantiate(HammerPrefab, pos, Quaternion.identity);
+        //attackParticle.transform.position = pos;
+        //criticalParticle.transform.position = pos;
     }
 }
 

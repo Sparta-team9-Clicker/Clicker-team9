@@ -1173,6 +1173,10 @@ MonoBehaviour:
   panel: {fileID: 791254344}
   equipPanel: {fileID: 782590507}
   escapeInventory: {fileID: 1867405801}
+  weaponIcon: {fileID: 0}
+  weaponUpgrade: {fileID: 0}
+  weaponManager: {fileID: 0}
+  weaponInfoText: {fileID: 0}
 --- !u!114 &253507719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1239,8 +1243,6 @@ RectTransform:
   - {fileID: 1309117042}
   - {fileID: 1274033966}
   - {fileID: 866003224}
-  - {fileID: 4662556018876640370}
-  - {fileID: 8604339368187052892}
   - {fileID: 403588217}
   - {fileID: 2095179550}
   - {fileID: 133083568}
@@ -3057,6 +3059,7 @@ MonoBehaviour:
   playerInventory: {fileID: 162719187}
   equipButton: {fileID: 1991447609}
   weapon: {fileID: 11400000, guid: 1d359d07f13abef4eb96021abc687ca9, type: 2}
+  weaponIcon: {fileID: 0}
 --- !u!114 &782590510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23504,11 +23507,11 @@ Transform:
   m_GameObject: {fileID: 5355518141927475919}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -380, y: -639.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 253507721}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!199 &4938920891795112273
 ParticleSystemRenderer:
@@ -33402,14 +33405,14 @@ Transform:
   m_GameObject: {fileID: 7676145264214125035}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -380, y: -639.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 477894287837886067}
   - {fileID: 4201552364833189264}
   - {fileID: 7512821172655069078}
-  m_Father: {fileID: 253507721}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!199 &8757421954399583969
 ParticleSystemRenderer:
@@ -33491,6 +33494,8 @@ SceneRoots:
   m_Roots:
   - {fileID: 680851140}
   - {fileID: 253507721}
+  - {fileID: 4662556018876640370}
+  - {fileID: 8604339368187052892}
   - {fileID: 275291367}
   - {fileID: 1186949119}
   - {fileID: 832585302}
