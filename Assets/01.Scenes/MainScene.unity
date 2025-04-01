@@ -1064,6 +1064,7 @@ MonoBehaviour:
   layout: {fileID: 2144617125}
   escape: {fileID: 1867405801}
   weapon: {fileID: 1991447610}
+  needMoney: {fileID: 870904282}
 --- !u!114 &253507724
 MonoBehaviour:
   m_ObjectHideFlags: 0

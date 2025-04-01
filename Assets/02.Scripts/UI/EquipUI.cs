@@ -10,6 +10,7 @@ public class EquipUI : MonoBehaviour
     public GameObject layout;
     public GameObject escape;
     public GameObject weapon;
+    public GameObject needMoney;
 
     private void Start()
     {
@@ -38,6 +39,7 @@ public class EquipUI : MonoBehaviour
         layout.SetActive(false);
         escape.SetActive(false);
         weapon.SetActive(false);
+        needMoney.SetActive(false);
     }
 
     public void BtnTrue()
@@ -45,5 +47,6 @@ public class EquipUI : MonoBehaviour
         layout.SetActive(true);
         escape.SetActive(true);
         weapon.SetActive(true);
+        needMoney.SetActive(true);
     }
 }
