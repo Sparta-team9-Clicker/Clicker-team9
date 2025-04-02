@@ -16,35 +16,7 @@ public class WeaponManager : MonoBehaviour
         btns.gameObject.SetActive(true);
     }
 
-    public void UpgradeWeapon()
-    {
-        if (weapon == null || weapon.weaponStats == null)
-        {
-            Debug.LogWarning("무기나 무기 스탯 정보가 없습니다.");
-            return;
-        }
-
-        // 강화 가능 여부 확인
-        //if (GameManager.Instance.playerData.weaponUpgrade >= weapon.weaponStats.maxUpgradeLevel)
-        //{
-        //    Debug.Log("최대 강화 레벨에 도달했습니다.");
-        //    return;
-        //}        
-
-        GameManager.Instance.playerData.weaponUpgrade++;
-        //weapon.currentUpgradeLevel++;
-        Debug.Log($"무기 강화 성공! 현재 레벨: {GameManager.Instance.playerData.weaponUpgrade}");
-        DisplayWeaponStats();
-    }
-
-    public void DisplayWeaponStats()
-    {
-        if (weapon == null || weapon.weaponStats == null)
-        {
-            Debug.LogWarning("무기 정보가 없습니다.");
-            return;
-        }               
-               
+  
         //int attackPower = weapon.GetAttackPower();
         //float critChance = weapon.GetCritChance();
 

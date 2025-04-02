@@ -16,7 +16,7 @@ public class PlayerInventory : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Weapon not found!");
+
         }
     }
 
@@ -24,14 +24,12 @@ public class PlayerInventory : MonoBehaviour
     {
         if (weapon == null)
         {
-            Debug.LogError("Weapon is null!");
             return;
         }
 
         if (!inventory.Contains(weapon))
         {
             inventory.Add(weapon);
-            Debug.Log(weapon.weaponName + " added to inventory.");
         }
     }
 
@@ -40,7 +38,6 @@ public class PlayerInventory : MonoBehaviour
         if (inventory.Contains(weapon))
         {
             equippedWeapon = weapon;
-            Debug.Log(weapon.weaponName + " equipped.");
         }
     }
 
@@ -48,7 +45,6 @@ public class PlayerInventory : MonoBehaviour
     {
         if (equippedWeapon != null)
         {
-            Debug.Log(equippedWeapon.weaponName + " unequipped.");
             equippedWeapon = null;
         }
     }
