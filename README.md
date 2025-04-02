@@ -1,7 +1,6 @@
 # **Jelly Tab**
 
-![Uploading 리드미영상.gif…]()
-
+![리드미영상](https://github.com/user-attachments/assets/c677f80c-2188-42b5-a3b9-85cf11e371e0)
 
 ## **1. 개요**
 
