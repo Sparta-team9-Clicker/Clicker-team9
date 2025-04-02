@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 0}
-  monsterDataTable: {fileID: 11400000, guid: 6798d765f02890549a68b8b5601496ac, type: 2}
+  monsterDataTable: {fileID: 11400000, guid: 8e4cee745303b1f40af04156837205a8, type: 2}
   currentStage: 0
   stageName: {fileID: 0}
   killcountText: {fileID: 0}

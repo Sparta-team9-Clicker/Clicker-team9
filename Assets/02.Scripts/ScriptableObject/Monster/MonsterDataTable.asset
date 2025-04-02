@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: f76da57e1a7f2574e81d81aab040ff3b, type: 3}
   m_Name: MonsterDataTable
-  m_EditorClassIdentifier: Assembly-CSharp::MonsterDataTable
+  m_EditorClassIdentifier: 
   monsters:
   - monsterName: "\uC0AC\uACFC\uC824\uB9AC"
     stageType: 0
@@ -35,13 +35,13 @@ MonoBehaviour:
     monsterPrefab: {fileID: 4941022575535913316, guid: c5fea505c9146f942b340c448c29e914, type: 3}
   - monsterName: "\uC9C0\uB801\uC774\uC824\uB9AC"
     stageType: 1
-    monsterHP: 1400
+    monsterHP: 1500
     rewardGold: 1200
     monsterPrefab: {fileID: 8651079771420158859, guid: c3011f93e26720140bf6194d3eb1b0c2, type: 3}
   - monsterName: "\uACF0\uC824\uB9AC"
     stageType: 1
-    monsterHP: 1600
-    rewardGold: 1400
+    monsterHP: 1800
+    rewardGold: 1500
     monsterPrefab: {fileID: 2909103014477013657, guid: 5495fd652493db241aeab67ffcc099ef, type: 3}
   - monsterName: "\uC0C1\uC5B4\uC824\uB9AC"
     stageType: 2
