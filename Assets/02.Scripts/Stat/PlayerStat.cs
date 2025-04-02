@@ -55,11 +55,11 @@ public class PlayerStat : MonoBehaviour
     }
 
     private void Start()
-    {        
+    {
         UpdateUI();
         UpdateWeaponUI();
 
-        if(playerData.Eqiup == true)
+        if (playerData.Eqiup == true)
         {
             weaponIcon.SetActive(true);
         }
@@ -85,7 +85,6 @@ public class PlayerStat : MonoBehaviour
         goldNeedGoldText.text = $"{TotalCost(playerData.goldBonusUpgrade):N0}";
         criticalNeedGoldText.text = $"{TotalCost(playerData.criticalUpgrade):N0}";
         criticalDamageNeedGoldText.text = $"{TotalCost(playerData.criticalDamageUpgrade):N0}";
-
         GameManager.Instance.SaveData();
     }
 
@@ -94,6 +93,7 @@ public class PlayerStat : MonoBehaviour
         weaponInfoText.text = "강화하기";
         weaponNeedGoldText.text = $"{TotalCost(playerData.weaponUpgrade):N0}";
         powerText.text = $"{playerData.attackPower.ToString("N0")}";
+        GameManager.Instance.SaveData();
     }
 
     public int TotalCost(int upgradeLevel) // 강화에 따른 비용 증가
@@ -198,7 +198,7 @@ public class PlayerStat : MonoBehaviour
     {
         AudioManager.instance.PlaySfx(AudioManager.Sfxs.Button);
 
-        if(playerData.Eqiup == false) // 장비 착용 시 업그레이드에 따른 스탯증가
+        if (playerData.Eqiup == false) // 장비 착용 시 업그레이드에 따른 스탯증가
         {
             WeaponStatUpgrade();
         }
@@ -217,12 +217,13 @@ public class PlayerStat : MonoBehaviour
         {
             playerData.gold -= totalCost;
             playerData.weaponUpgrade++;
-            playerData.attackPower += 5;
-            playerData.critical += 0.5f;
             GameManager.Instance.SaveData();
+            UpdateWeaponUI();
+
             if (playerData.Eqiup == true)
             {
-                UpdateWeaponUI();
+                playerData.attackPower += 5;
+                playerData.critical += 0.5f;
             }
         }
         else
