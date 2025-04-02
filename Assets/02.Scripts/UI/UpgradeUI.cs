@@ -16,7 +16,7 @@ public class UpgradeUI : MonoBehaviour
         downBtn.gameObject.SetActive(true);
     }
 
-    public void OnClickUpBtn()
+    public void OnClickUpBtn() // 강화창 올리기 버튼
     {
         upBtn.gameObject.SetActive(false);
         downBtn.gameObject.SetActive(true);
@@ -24,7 +24,7 @@ public class UpgradeUI : MonoBehaviour
         BtnTrue();
     }
 
-    public void OnClickDownBtn()
+    public void OnClickDownBtn() // 강화창 내리기 버튼
     {
         upBtn.gameObject.SetActive(true);
         downBtn.gameObject.SetActive(false);
@@ -32,13 +32,13 @@ public class UpgradeUI : MonoBehaviour
         BtnFalse();
     }
 
-    public void BtnFalse()
+    public void BtnFalse() // 강화창 UI들 끄기
     {
         btns.SetActive(false);
         equip.SetActive(false);
     }
 
-    public void BtnTrue()
+    public void BtnTrue() // 강화창 UI들 켜기
     {
         btns.SetActive(true);
         equip.SetActive(true);

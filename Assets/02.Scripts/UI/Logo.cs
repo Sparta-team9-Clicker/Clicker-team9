@@ -24,7 +24,7 @@ public class Logo : MonoBehaviour
         StartCoroutine(StartLogo());
     }
 
-    IEnumerator StartLogo()
+    IEnumerator StartLogo() // 게임시작 시 로고 애니메이션
     {
         jelly.enabled = true;
         jellyAnim.Play("Jelly", 0, 0f);

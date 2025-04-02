@@ -38,7 +38,7 @@ public class PlayerStat : MonoBehaviour
     {
         if (GameManager.Instance == null || GameManager.Instance.playerData == null)
         {
-            Debug.LogError("GameManager 또는 PlayerData가 초기화되지 않았습니다.");
+            Debug.Log("GameManager 또는 PlayerData가 초기화되지 않았습니다.");
             return;
         }
 
@@ -49,9 +49,6 @@ public class PlayerStat : MonoBehaviour
         criticalDamageStat = new CriticalDamageStat(playerData, this);
         goldStat = new GoldStat(playerData, this);
 
-        if (weaponManager == null)
-            weaponManager = FindObjectOfType<WeaponManager>();
-
         panel.SetActive(false);
         equipPanel.SetActive(false);
         weaponIcon.SetActive(false);
@@ -59,7 +56,9 @@ public class PlayerStat : MonoBehaviour
 
     private void Start()
     {
+        playerData.Eqiup = false;
         UpdateUI();
+        UpdateWeaponUI();
     }
 
     private void Update()
@@ -71,7 +70,7 @@ public class PlayerStat : MonoBehaviour
             goldText.text = $"{playerData.gold.ToString("N0")}";
     }
 
-    private void UpdateUI()
+    private void UpdateUI() // 플레이어 스탯 업데이트
     {
         if (playerData == null) return;
 
@@ -83,27 +82,17 @@ public class PlayerStat : MonoBehaviour
         criticalNeedGoldText.text = $"{TotalCost(playerData.criticalUpgrade):N0}";
         criticalDamageNeedGoldText.text = $"{TotalCost(playerData.criticalDamageUpgrade):N0}";
 
-        UpdateWeaponUI();
-
         GameManager.Instance.SaveData();
     }
 
-    private void UpdateWeaponUI()
+    private void UpdateWeaponUI() // 무기 강화 업데이트
     {
-        //if (weaponManager != null && weaponManager.weapon != null && weaponInfoText != null)
-        //{
-        //    var weapon = weaponManager.weapon;
-        //    string info = $"{weapon.weaponName}\n" +
-        //                  $"Level: {weapon.currentUpgradeLevel}/{weapon.weaponStats.maxUpgradeLevel}\n" +
-        //                  $"Attack: {weapon.GetAttackPower()}\n" +
-        //                  $"Crit Chance: {weapon.GetCritChance() * 100f:F1}%";
-        //    weaponInfoText.text = info;
-        //}
         weaponInfoText.text = "강화하기";
         weaponNeedGoldText.text = $"{TotalCost(playerData.weaponUpgrade):N0}";
+        powerText.text = $"{playerData.attackPower.ToString("N0")}";
     }
 
-    public int TotalCost(int upgradeLevel)
+    public int TotalCost(int upgradeLevel) // 강화에 따른 비용 증가
     {
         int baseGold = 100;
         float multiplier = 1.2f;
@@ -117,7 +106,7 @@ public class PlayerStat : MonoBehaviour
         return totalCost;
     }
 
-    public void OnClickPowerUp()
+    public void OnClickPowerUp() // 파워업 버튼
     {
         AudioManager.instance.PlaySfx(AudioManager.Sfxs.Button);
         if (playerData.gold < TotalCost(playerData.attackUpgrade))
@@ -131,7 +120,7 @@ public class PlayerStat : MonoBehaviour
         }
     }
 
-    public void OnClickCriticalUp()
+    public void OnClickCriticalUp() // 크리티컬 확률업 버튼
     {
         AudioManager.instance.PlaySfx(AudioManager.Sfxs.Button);
         if (playerData.gold < TotalCost(playerData.criticalUpgrade))
@@ -145,7 +134,7 @@ public class PlayerStat : MonoBehaviour
         }
     }
 
-    public void OnClickCriticalDamageUp()
+    public void OnClickCriticalDamageUp() // 크리티컬 데미지업 버튼
     {
         AudioManager.instance.PlaySfx(AudioManager.Sfxs.Button);
         if (playerData.gold < TotalCost(playerData.criticalDamageUpgrade))
@@ -159,7 +148,7 @@ public class PlayerStat : MonoBehaviour
         }
     }
 
-    public void OnClickGoldUp()
+    public void OnClickGoldUp() // 골드 획득량업 버튼
     {
         AudioManager.instance.PlaySfx(AudioManager.Sfxs.Button);
         if (playerData.gold < TotalCost(playerData.goldBonusUpgrade))
@@ -173,7 +162,7 @@ public class PlayerStat : MonoBehaviour
         }
     }
 
-    IEnumerator ShowPanel()
+    IEnumerator ShowPanel() // 돈 부족시 띄우는 판넬
     {
         AudioManager.instance.PlaySfx(AudioManager.Sfxs.Fail);
         panel.SetActive(true);
@@ -181,58 +170,67 @@ public class PlayerStat : MonoBehaviour
         panel.SetActive(false);
     }
 
-    public void OnClickSave()
+    public void OnClickSave() // 세이브 버튼
     {
         AudioManager.instance.PlaySfx(AudioManager.Sfxs.Button);
         GameManager.Instance.SaveData();
     }
 
-    public void OnClickEQPanel()
+    public void OnClickEQPanel() // 장비창 버튼
     {
         AudioManager.instance.PlaySfx(AudioManager.Sfxs.Button);
         equipPanel.SetActive(true);
         Btns.SetActive(false);
     }
 
-    public void OnClickEscapeInventory()
+    public void OnClickEscapeInventory() // 장비창 나가기 버튼
     {
         AudioManager.instance.PlaySfx(AudioManager.Sfxs.Button);
         equipPanel.SetActive(false);
         Btns.SetActive(true);
     }
 
-    public void DisplayWeapon()
+    public void DisplayWeapon() // 착용한 장비 띄워주는 버튼
     {
         AudioManager.instance.PlaySfx(AudioManager.Sfxs.Button);
+
+        if(playerData.Eqiup == false) // 장비 착용 시 업그레이드에 따른 스탯증가
+        {
+            WeaponStatUpgrade();
+        }
+
+        playerData.Eqiup = true;
         weaponIcon.SetActive(true);
+        UpdateWeaponUI();
     }
 
-    public void WeaponUpgrade()
+    public void WeaponUpgrade() // 장비 강화 버튼
     {
         AudioManager.instance.PlaySfx(AudioManager.Sfxs.Button);
         int totalCost = TotalCost(playerData.weaponUpgrade);
 
-        if (weaponManager != null)
+        if (playerData.gold >= totalCost)
         {
-            if (playerData.gold >= totalCost)
+            playerData.gold -= totalCost;
+            playerData.weaponUpgrade++;
+            playerData.attackPower += 5;
+            playerData.critical += 0.5f;
+            GameManager.Instance.SaveData();
+            if (playerData.Eqiup == true)
             {
-                playerData.gold -= totalCost;
-                playerData.weaponUpgrade++;
-                playerData.attackPower += 10;
-                playerData.critical += 0.5f;
-                weaponManager.UpgradeWeapon();
-                UpdateUI();
-                GameManager.Instance.SaveData();
-            }
-            else
-            {
-                StartCoroutine(ShowPanel());
+                UpdateWeaponUI();
             }
         }
         else
         {
-            Debug.LogWarning("WeaponManager가 연결되지 않았습니다.");
+            StartCoroutine(ShowPanel());
         }
-    }   
+    }
+
+    public void WeaponStatUpgrade() // 장비 착용 시 업그레이드에 따른 스탯증가
+    {
+        playerData.attackPower += playerData.weaponUpgrade * 5;
+        playerData.critical += playerData.weaponUpgrade * 0.5f;
+    }
 }
 

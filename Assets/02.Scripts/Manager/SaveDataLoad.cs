@@ -26,7 +26,7 @@ public class SaveDataLoad : MonoBehaviour
         LoadSaveSlot(3, save3Text);
     }
 
-    public void LoadSaveSlot(int slotIndex, TextMeshProUGUI saveText)
+    public void LoadSaveSlot(int slotIndex, TextMeshProUGUI saveText) // 슬롯 3개 중 로드할 데이터 선택
     {
         string filename = $"saveData_{slotIndex}.json";
         string fullPath = path + filename;
@@ -43,34 +43,34 @@ public class SaveDataLoad : MonoBehaviour
         }
     }
 
-    public void OnClickCloseSave()
+    public void OnClickCloseSave() // 세이브 창 닫기
     {
         AudioManager.instance.PlaySfx(AudioManager.Sfxs.Button);
         savePanel.SetActive(false);
     }
 
-    public void OnClickStartBtn()
+    public void OnClickStartBtn() // 시작버튼
     {
         savePanel.SetActive(true);
         AudioManager.instance.PlaySfx(AudioManager.Sfxs.Button);
         UpdateSaveSlots();
     }
 
-    public void LoadData1()
+    public void LoadData1() // 데이터 1번 로드
     {
         GameManager.Instance.LoadData(1);
         SceneLoad.instance.ChangeScene("MainScene");
         AudioManager.instance.PlayBgm(AudioManager.Bgms.Stage1);
     }
 
-    public void LoadData2()
+    public void LoadData2() // 데이터 2번 로드
     {
         GameManager.Instance.LoadData(2);
         SceneLoad.instance.ChangeScene("MainScene");
         AudioManager.instance.PlayBgm(AudioManager.Bgms.Stage1);
     }
 
-    public void LoadData3()
+    public void LoadData3() // 데이터 3번 로드
     {
         GameManager.Instance.LoadData(3);
         SceneLoad.instance.ChangeScene("MainScene");
