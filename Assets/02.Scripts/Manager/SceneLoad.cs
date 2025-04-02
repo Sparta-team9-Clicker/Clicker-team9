@@ -63,8 +63,7 @@ public class SceneLoad : MonoBehaviour
     }
 
     public IEnumerator TransitionStage() // 스테이지 전환 시 코루틴
-    {
-        Debug.Log("호출됨");
+    {        
         fadeImage.gameObject.SetActive(true);
         yield return Fade(1f);
 
