@@ -1,5 +1,7 @@
 # **Jelly Tab**
 
+![리드미영상](https://github.com/user-attachments/assets/c677f80c-2188-42b5-a3b9-85cf11e371e0)
+
 ## **1. 개요**
 
 - Jelly Tab은 젤리를 클릭하여 유리병으로 되돌아가게 하는 2D 클리커 게임입니다.
