@@ -34,3 +34,12 @@
 - 주정민
 - 진희원
 - 최한빈
+
+## **6. 에셋 출처**
+https://assetstore.unity.com/packages/2d/gui/violet-themed-ui-235559
+https://assetstore.unity.com/packages/audio/music/free-casual-music-pack-242591
+https://assetstore.unity.com/packages/2d/characters/bolt-2d-jellyfarm-assets-pack-188722
+
+
+
+
