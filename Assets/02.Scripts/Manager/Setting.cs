@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class Setting : MonoBehaviour
 {
-    public GameObject settingPanel;
+    public GameObject settingPanel; // 설정 판넬
     
     public Slider bgmSlider;
     public Slider sfxSlider;
@@ -34,26 +34,26 @@ public class Setting : MonoBehaviour
         PlayerPrefs.SetFloat("SFX_Volume", volume);
     }
 
-    public void OnClickSetting()
+    public void OnClickSetting() // 세팅 버튼
     {
         AudioManager.instance.PlaySfx(AudioManager.Sfxs.Button);
         settingPanel.SetActive(true);
     }
 
-    public void OnClickCloseSetting()
+    public void OnClickCloseSetting() // 세팅창 닫기 버튼
     {
         AudioManager.instance.PlaySfx(AudioManager.Sfxs.Button);
         settingPanel.SetActive(false);
     }    
 
-    public void OnClickStartScene()
+    public void OnClickStartScene() // 메인씬에서 스타트씬으로 가기 버튼
     {
         AudioManager.instance.PlaySfx(AudioManager.Sfxs.Button);
         AudioManager.instance.PlayBgm(AudioManager.Bgms.Title);
         SceneLoad.instance.ChangeScene("StartScene");
     }    
 
-    public void OnClickExitBtn()
+    public void OnClickExitBtn() // 나가기 버튼
     {
 #if UNITY_EDITOR        
         GameManager.Instance.SaveData();

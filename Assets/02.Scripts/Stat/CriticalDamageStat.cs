@@ -2,7 +2,7 @@ public class CriticalDamageStat : StatBase
 {
     public CriticalDamageStat(PlayerData data, PlayerStat stat) : base(data, stat) { }
 
-    public override void Upgrade()
+    public override void Upgrade() // 크리티컬 데미지 업그레이드
     {
         int totalCost = playerStat.TotalCost(playerData.criticalDamageUpgrade);
 

@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void SaveData()
+    public void SaveData() // 데이터 세이브
     {
         string filename = $"saveData_{curdataIndex}.json";
         string fullPath = path + filename;
@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
         File.WriteAllText(fullPath, data);
     }
 
-    public void LoadData(int dataIndex)
+    public void LoadData(int dataIndex) // 데이터 로드
     {
         curdataIndex = dataIndex;
         string filename = $"saveData_{dataIndex}.json";

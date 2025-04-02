@@ -28,12 +28,12 @@ public class SceneLoad : MonoBehaviour
             fadeImage.gameObject.SetActive(false);
     }
 
-    public void ChangeScene(string sceneName)
+    public void ChangeScene(string sceneName) // 씬 전환시 페이드이미지 코루틴 실행
     {
         StartCoroutine(TransitionScene(sceneName));
     }
 
-    private IEnumerator TransitionScene(string sceneName)
+    private IEnumerator TransitionScene(string sceneName) // 이미지 켜졌다가 꺼지는 코루틴
     {
         fadeImage.gameObject.SetActive (true);
         yield return Fade(1f);
@@ -46,7 +46,7 @@ public class SceneLoad : MonoBehaviour
         fadeImage.gameObject.SetActive(false);
     }
 
-    private IEnumerator Fade(float targetAlpha)
+    private IEnumerator Fade(float targetAlpha) // 이미지 알파값이 증가했다가 떨어지는 코루틴
     {
         float startAlpha = fadeImage.color.a;
         float elapsedTime = 0f;
@@ -62,7 +62,7 @@ public class SceneLoad : MonoBehaviour
         fadeImage.color = new Color(fadeImage.color.r, fadeImage.color.g, fadeImage.color.b, targetAlpha);        
     }
 
-    public IEnumerator TransitionStage()
+    public IEnumerator TransitionStage() // 스테이지 전환 시 코루틴
     {
         Debug.Log("호출됨");
         fadeImage.gameObject.SetActive(true);

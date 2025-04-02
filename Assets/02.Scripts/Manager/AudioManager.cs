@@ -5,7 +5,7 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
 
-    public enum Bgms
+    public enum Bgms // 브금들
     {
         Title,
         Stage1,
@@ -13,7 +13,7 @@ public class AudioManager : MonoBehaviour
         Stage3
     }
 
-    public enum Sfxs
+    public enum Sfxs // 효과음들
     {
         Button,
         Attack,
