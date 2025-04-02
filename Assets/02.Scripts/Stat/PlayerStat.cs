@@ -55,10 +55,14 @@ public class PlayerStat : MonoBehaviour
     }
 
     private void Start()
-    {
-        playerData.Eqiup = false;
+    {        
         UpdateUI();
         UpdateWeaponUI();
+
+        if(playerData.Eqiup == true)
+        {
+            weaponIcon.SetActive(true);
+        }
     }
 
     private void Update()

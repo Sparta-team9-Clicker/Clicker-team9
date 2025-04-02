@@ -21,8 +21,7 @@ public class WeaponManager : MonoBehaviour
         //float critChance = weapon.GetCritChance();
 
         //Debug.Log($"{weapon.weaponName} (Lv. {weapon.currentUpgradeLevel})\n" +
-        //          $"공격력: {attackPower}, 치명타 확률: {critChance * 100:F1}%");
-    }   
+        //          $"공격력: {attackPower}, 치명타 확률: {critChance * 100:F1}%");    
 }
 
 
